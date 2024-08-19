@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   # Avant d'exécuter les actions show, edit, update, destroy et edit_inline, on exécute la méthode set_album
-  before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline]
+  before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline, :edit_photos, :delete_photos]
 
   # On récupère tous les albums et on les stocke dans la variable @albums
   def index
@@ -60,6 +60,16 @@ class AlbumsController < ApplicationController
       # indique que la réponse sera du javascript, ce qui exécutera un fichier js.erb pour manipuler la page via AJAX
       format.js
     end
+  end
+
+  def edit_photos
+    @photos = @album.photos
+  end
+
+  def delete_photos
+    @photos = @album.photos.where(id: params[:photo_ids])
+    @photos.destroy_all
+    redirect_to edit_photos_album_path(@album), notice: 'Photos deleted successfully.'
   end
 
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur

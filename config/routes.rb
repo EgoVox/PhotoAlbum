@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :albums do
     resources :photos, only: [:create, :destroy]
-  end
 
-  post 'albums/:id/edit_inline', to: 'albums#edit_inline', as: 'edit_inline_album'
+  member do
+    post "edit_inline"
+    get 'edit_photos' # Route pour afficher la page d'édition des photos
+    delete 'delete_photos', to: 'albums#delete_photos' # Route pour supprimer les photos sélectionnées
+    end
+  end
 end

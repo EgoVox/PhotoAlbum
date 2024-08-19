@@ -1,0 +1,46 @@
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.album-preview {
+  flex: 0 0 calc(33.333% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  text-align: center;
+  /* Centre le texte sous l'image */
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  /* Pour que l'image et l'icône soient alignées correctement */
+}
+
+.album-thumbnail {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-color: red;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 10;
+}
+
+.edit-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
