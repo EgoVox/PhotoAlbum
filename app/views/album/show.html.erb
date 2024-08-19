@@ -1,0 +1,18 @@
+<h1><%= @album.name %></h1>
+
+<%= render 'carousel', photos: @photos %>
+
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'Edit', edit_inline_album_path(@album), remote: true %>
+  <%= form_with model: [@album, Photo.new], local: true do |f| %>
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.submit 'Add Photo' %>
+  <% end %>
+
+  <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
