@@ -1,7 +1,7 @@
 <h1>Mes Albums</h1>
 
 <% if user_signed_in? && current_user.admin? %>
-  <%= link_to 'Create New Album', new_album_path %>
+  <%= link_to 'Create New Album', new_album_path, class: 'btn-create-album' %>
 <% end %>
 <br>
 <br>
@@ -9,14 +9,16 @@
   <% @albums.each do |album| %>
     <div class="album-preview">
       <div class="image-container">
-        <%= image_tag album.photos.sample.image, class: "album-thumbnail" if album.photos.any? %>
+        <%= link_to album_path(album) do %>
+          <%= image_tag album.photos.sample.image, class: "album-thumbnail" if album.photos.any? %>
+        <% end %>
         <% if user_signed_in? && current_user.admin? %>
           <%= link_to edit_photos_album_path(album), class: 'edit-icon' do %>
             <i class="fas fa-edit"></i> <!-- Icône Font Awesome -->
           <% end %>
         <% end %>
       </div>
-      <h2><%= link_to album.name, album %></h2>
+      <h2><%= album.name %></h2> <!-- Le nom de l'album n'est plus cliquable -->
     </div>
   <% end %>
 </div>
