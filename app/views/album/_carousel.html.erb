@@ -1,0 +1,16 @@
+<div class="carousel">
+  <div class="main-image">
+    <%= image_tag photos.first.image if photos.any? %>
+  </div>
+  <div class="thumbnails">
+    <% photos.each do |photo| %>
+      <div class="thumbnail">
+        <%= image_tag photo.image %>
+      </div>
+    <% end %>
+  </div>
+  <div class="controls">
+    <%= link_to 'Left', '#' %>
+    <%= link_to 'Right', '#' %>
+  </div>
+</div>

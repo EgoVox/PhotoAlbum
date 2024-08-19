@@ -1,0 +1,17 @@
+<h1>Albums</h1>
+
+<% @albums.each do |album| %>
+  <div>
+    <h2><%= link_to album.name, album %></h2>
+    <%= image_tag album.photos.sample.image if album.photos.any? %>
+
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to 'Edit', edit_inline_album_path(album), remote: true %>
+      <%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'Create New Album', new_album_path %>
+<% end %>
