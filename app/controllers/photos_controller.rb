@@ -1,4 +1,4 @@
-class PhotoController < ApplicationController
+class PhotosController < ApplicationController
   # Avant d'exécuter les actions create et destroy, on exécute la méthode set_album
   before_action :set_album
 

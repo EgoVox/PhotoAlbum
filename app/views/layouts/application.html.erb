@@ -11,6 +11,20 @@
   </head>
 
   <body>
+
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= button_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
+        <% if current_user.admin? %>
+          <li>Connecté en tant qu'admin</li>
+        <% end %>
+      <% else %>
+        <li><%= link_to 'Connexion en tant qu\'admin', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
     <%= yield %>
   </body>
 </html>

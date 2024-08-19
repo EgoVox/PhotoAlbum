@@ -1,4 +1,4 @@
-class AlbumController < ApplicationController
+class AlbumsController < ApplicationController
   # Avant d'exécuter les actions show, edit, update, destroy et edit_inline, on exécute la méthode set_album
   before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline]
 
