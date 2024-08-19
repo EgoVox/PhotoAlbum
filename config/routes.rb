@@ -6,5 +6,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "albums#index"
+
+  resources :albums do
+    resources :photos, only: [:create, :destroy]
+  end
+
+  post 'albums/:id/edit_inline', to: 'albums#edit_inline', as: 'edit_inline_album'
 end
