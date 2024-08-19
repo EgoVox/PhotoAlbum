@@ -3,7 +3,7 @@
 <%= render 'carousel', photos: @photos %>
 
 <% if user_signed_in? && current_user.admin? %>
-  <%= link_to 'Edit', edit_inline_album_path(@album), remote: true %>
+  <%= link_to 'Edit', edit_inline_album_path(@album), method: :post, remote: true %>
   <%= form_with model: [@album, Photo.new], local: true do |f| %>
     <%= f.label :image %>
     <%= f.text_field :image %>
@@ -15,4 +15,6 @@
   <% end %>
 
   <%= link_to 'Delete Album', @album, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+  <% end %>
+
+  <%= link_to 'Retour aux albums', root_path %>
