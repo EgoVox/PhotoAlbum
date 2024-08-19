@@ -1,0 +1,20 @@
+.image-description {
+  height: 50px;
+  /* Assure une hauteur fixe pour la description */
+  overflow: hidden;
+  /* Empêche le débordement du texte */
+  margin-top: 10px;
+  /* Ajoute de l'espace entre l'image et la description */
+  text-align: center;
+  /* Centre le texte */
+  color: #333;
+  /* Couleur du texte */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-description p {
+  margin: 0;
+  /* Supprime les marges par défaut */
+}

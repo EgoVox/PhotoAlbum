@@ -1,16 +1,32 @@
-<div class="carousel">
+<div class="carousel" data-controller="albums-show">
   <div class="main-image">
-    <%= image_tag photos.first.image if photos.any? %>
-  </div>
-  <div class="thumbnails">
-    <% photos.each do |photo| %>
-      <div class="thumbnail">
-        <%= image_tag photo.image %>
+    <% if photos.any? %>
+      <%= image_tag photos.first.image, id: "main-image", class: "main-image-element" %>
+      <div id="main-image-description" class="image-description">
+        <% if photos.first.description.present? %>
+          <p><%= photos.first.description %></p>
+        <% end %>
       </div>
+    <% else %>
+      <p>No images available.</p>
     <% end %>
   </div>
-  <div class="controls">
-    <%= link_to 'Left', '#' %>
-    <%= link_to 'Right', '#' %>
+
+  <div class="thumbnail-container">
+    <%= link_to '#', class: 'control-left' do %>
+      &#9664;
+    <% end %>
+
+    <div class="thumbnails">
+      <% photos.each_with_index do |photo, index| %>
+        <div class="thumbnail <%= 'active' if index == 0 %>" data-index="<%= index %>" data-description="<%= photo.description %>">
+          <%= image_tag photo.image, class: "thumbnail-image" %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to '#', class: 'control-right' do %>
+      &#9654;
+    <% end %>
   </div>
 </div>
