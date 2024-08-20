@@ -5,3 +5,6 @@
 import "controllers"
 import "./carousel"
 import "./displayForm"
+
+//= require displayForm
+//= require carousel
