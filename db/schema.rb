@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_08_20_125047) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.integer "year"
@@ -23,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_125047) do
   create_table "photos", force: :cascade do |t|
     t.string "image"
     t.text "description"
-    t.integer "album_id", null: false
+    t.bigint "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_photos_on_album_id"
