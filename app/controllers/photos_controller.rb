@@ -25,10 +25,10 @@ class PhotosController < ApplicationController
 
   #  On définit la méthode set_album qui récupère l'album à partir de l'id passé dans les paramètres
   def set_album
-    @album = Album.find(params[:album_id])
+    @album = Album.find_by!(slug: params[:album_id])
   end
 
-  # On définit les paramètres autorisés pour la création d'une photo
+  # Méthode pour définir les paramètres autorisés pour la création d'une photo
   def photo_params
     params.require(:photo).permit(:image, :description)
   end
