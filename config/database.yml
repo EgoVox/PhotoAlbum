@@ -25,6 +25,5 @@ test:
 
 production:
   <<: *default
-  database: dl-albums_production
-  username: dl-albums
-  password: <%= ENV["DLALBUMS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
