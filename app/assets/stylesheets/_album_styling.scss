@@ -1,0 +1,120 @@
+.photo-management {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-management a {
+  text-decoration: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.button-group .btn-primary,
+.button-group .btn-danger {
+  flex: 1;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.button-group .btn-danger:last-child {
+  margin-right: 0;
+}
+
+.btn-primary {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.form-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+.back-link {
+  margin-top: 20px;
+}
+
+.back-link .btn-back {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-link .btn-back:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.album-title-high {
+  font-size: 36px;
+  /* Augmente la taille de la police pour la rendre plus imposante */
+  font-weight: bold;
+  /* Rend le texte en gras pour le faire ressortir */
+  color: #333;
+  /* Couleur sombre pour un bon contraste */
+  text-align: center;
+  /* Centre le titre sur la page */
+  margin-bottom: 20px;
+  /* Ajoute un espace sous le titre pour le séparer du contenu suivant */
+  letter-spacing: 1px;
+  /* Espacement léger entre les lettres pour un effet plus aéré */
+  text-transform: uppercase;
+  /* Met le texte en majuscules pour un effet plus formel */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Ajoute une ombre légère pour donner de la profondeur */
+  border-bottom: 2px solid #007bff;
+  /* Ajoute une bordure inférieure pour séparer le titre visuellement */
+  display: inline-block;
+  /* Assure que le soulignement ne s'étende pas sur toute la largeur */
+  padding-bottom: 10px;
+  /* Ajoute de l'espace sous le texte pour un espacement cohérent */
+}

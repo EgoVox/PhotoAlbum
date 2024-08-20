@@ -11,20 +11,49 @@
   </head>
 
   <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+      <div class="logo">
+        <h1><%= link_to 'Mes Photos', root_path %></h1>
+      </div>
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= button_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'nav-btn' %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to "Bonjour #{current_user.email}", '#' %></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to 'Connexion', new_user_session_path, class: 'nav-link' %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= button_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
-        <% if current_user.admin? %>
-          <li>Connecté en tant qu'admin</li>
-        <% end %>
-      <% else %>
-        <li><%= link_to 'Connexion en tant qu\'admin', new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
+    <%# Flash messages %>
+    <% if flash[:notice] %>
+      <div class="flash notice"><%= flash[:notice] %></div>
+    <% end %>
 
+    <% if flash[:alert] %>
+      <div class="flash alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%# Main Content %>
     <%= yield %>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; <%= Time.now.year %> PhotoAlbum. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>

@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
     # Si l'album est sauvegardé, on redirige vers la page de l'album avec un message de succès
     if @album.save
-      redirect_to @album, notice: 'Album was successfully created.'
+      redirect_to @album, notice: 'L\'album a bien été créé.'
     # Sinon, on redirige vers la page de création d'album permettant de corriger les erreurs
     else
       render 'new'
@@ -38,7 +38,7 @@ class AlbumsController < ApplicationController
   def update
     # Si l'album est mis à jour avec succès, on redirige vers la page de l'album avec un message de succès
     if @album.update(album_params)
-      redirect_to @album, notice: 'Album was successfully updated.'
+      redirect_to @album, notice: 'L\'album a été mis à jour.'
     else
       # Sinon, on redirige vers la page d'édition de l'album permettant de corriger les erreurs
       render 'edit'
@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
     # On supprime l'album de la base de données
     @album.destroy
     # On redirige vers la page des albums avec un message de succès
-    redirect_to albums_url, notice: 'Album was successfully destroyed.'
+    redirect_to albums_url, notice: 'Les photos ont été supprimées.'
   end
 
   # l'action edit_inline est responsable de l'édition en ligne d'un album sans recharge de la page
@@ -69,7 +69,7 @@ class AlbumsController < ApplicationController
   def delete_photos
     @photos = @album.photos.where(id: params[:photo_ids])
     @photos.destroy_all
-    redirect_to edit_photos_album_path(@album), notice: 'Photos deleted successfully.'
+    redirect_to edit_photos_album_path(@album), notice: 'Suppression effectuée.'
   end
 
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur

@@ -7,9 +7,9 @@ class PhotosController < ApplicationController
     # On crée une nouvelle instance de photo pour l'album. On préfère un .build à un .new pour que l'association au bon album soit faite via album.photos
     @photo = @album.photos.build(photo_params)
     if @photo.save
-      redirect_to @photo.album, notice: 'Photo was successfully created.'
+      redirect_to @photo.album, notice: 'La photo a bien été ajoutée.'
     else
-      redirect_to @photo.album, alert: 'Photo was not created.'
+      redirect_to @photo.album, alert: 'La photo n\'a pas été ajoutée.'
     end
   end
 
@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = @album.photos.find(params[:id])
     @photo.destroy
-    redirect_to @photo.album, notice: 'Photo was successfully destroyed.'
+    redirect_to @photo.album, notice: 'La photo a bien été supprimée.'
   end
 
   # On définit les méthodes privées de la classe

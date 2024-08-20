@@ -1,16 +1,19 @@
-<h1>Mes Albums</h1>
+<div class="header-actions">
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Nouvel Album', new_album_path, class: 'btn-create-album' %>
+  <% end %>
+</div>
 
-<% if user_signed_in? && current_user.admin? %>
-  <%= link_to 'Create New Album', new_album_path, class: 'btn-create-album' %>
-<% end %>
-<br>
-<br>
 <div class="albums-container">
   <% @albums.each do |album| %>
     <div class="album-preview">
       <div class="image-container">
         <%= link_to album_path(album) do %>
-          <%= image_tag album.photos.sample.image, class: "album-thumbnail" if album.photos.any? %>
+          <% if album.photos.any? %>
+            <%= image_tag album.photos.sample.image, class: "album-thumbnail" %>
+          <% else %>
+            <%= image_tag 'default_album.png', class: "album-thumbnail", alt: "Album vide" %>
+          <% end %>
         <% end %>
         <% if user_signed_in? && current_user.admin? %>
           <%= link_to edit_photos_album_path(album), class: 'edit-icon' do %>
@@ -18,7 +21,9 @@
           <% end %>
         <% end %>
       </div>
-      <h2><%= album.name %></h2> <!-- Le nom de l'album n'est plus cliquable -->
+      <h2 class="album-title-light">
+        <%= album.name %> (<%= album.photos.count %>)
+      </h2>
     </div>
   <% end %>
 </div>
