@@ -14,7 +14,7 @@
  *= require_self
  */
 
-@import "photo_wheel";
+
 @import "photo_album";
 @import "image_desc";
 @import "photo_edit";
@@ -26,3 +26,4 @@
 @import "login_page";
 @import "album_styling.scss";
 @import "album_form";
+@import "photo_wheel";
