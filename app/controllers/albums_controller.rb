@@ -77,11 +77,11 @@ class AlbumsController < ApplicationController
 
   # On récupère l'album en fonction de l'id passé dans les paramètres
   def set_album
-    @album = Album.find(params[:id])
+    @album = Album.find_by!(slug: params[:id])
   end
 
   # On définit les paramètres autorisés pour la création et la mise à jour d'un album
   def album_params
-    params.require(:album).permit(:name)
+    params.require(:album).permit(:name, :year, :slug)
   end
 end

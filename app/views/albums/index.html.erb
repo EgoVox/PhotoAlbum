@@ -12,7 +12,7 @@
           <% if album.photos.any? %>
             <%= image_tag album.photos.sample.image, class: "album-thumbnail" %>
           <% else %>
-            <%= image_tag 'default_album.png', class: "album-thumbnail", alt: "Album vide" %>
+            <%= image_tag 'default_album.jpg', class: "album-thumbnail", alt: "Album vide" %>
           <% end %>
         <% end %>
         <% if user_signed_in? && current_user.admin? %>
