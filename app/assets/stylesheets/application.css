@@ -19,3 +19,10 @@
 @import "image_desc";
 @import "photo_edit";
 @import "create_album_button";
+/* @import "add_photos"; */
+@import "flash";
+@import "footer_header";
+@import "logo";
+@import "login_page";
+@import "album_styling.scss";
+@import "album_form";

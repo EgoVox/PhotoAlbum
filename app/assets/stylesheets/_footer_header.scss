@@ -1,0 +1,87 @@
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+header .logo h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a,
+header nav ul li form button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-btn {
+  background-color: #444;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #555;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+footer .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer .social-links li {
+  margin: 0 10px;
+}
+
+footer .social-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .social-links li a:hover {
+  color: #ddd;
+}

@@ -1,31 +1,22 @@
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  /* Aligne le bouton à droite */
+  margin-bottom: 20px;
+  /* Ajoute un espacement en dessous du bouton */
+}
+
 .btn-create-album {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #ffffff;
   background-color: #007bff;
-  /* Bleu standard */
-  border: none;
+  color: white;
+  padding: 10px 20px;
   border-radius: 4px;
   text-decoration: none;
-  text-align: center;
-  font-weight: bold;
+  font-size: 16px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-create-album:hover {
   background-color: #0056b3;
-  /* Bleu plus foncé au survol */
   transform: translateY(-2px);
-  /* Légère élévation au survol */
-}
-
-.btn-create-album:active {
-  background-color: #004085;
-  /* Bleu encore plus foncé lors du clic */
-  transform: translateY(0);
-  /* Réinitialisation de l'élévation lors du clic */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Réduction de l'ombre lors du clic */
 }
