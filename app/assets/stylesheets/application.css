@@ -14,7 +14,7 @@
  *= require_self
  */
 
-@import "carousel";
+@import "photo_wheel";
 @import "photo_album";
 @import "image_desc";
 @import "photo_edit";
