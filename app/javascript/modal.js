@@ -37,4 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
       modal.style.display = "none";
     }
   });
+
+  // Masquer la modale par défaut lors du chargement de la page
+  modal.style.display = "none";
 });
