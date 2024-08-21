@@ -2,37 +2,41 @@
 
 <%= render 'carousel', photos: @photos %>
 
-<% if user_signed_in? && current_user.admin? %>
-  <!-- Bandeau d'icônes sticky à gauche de l'écran -->
-  <div class="icon-bar-sticky">
-    <!-- Icône pour ajouter une photo -->
+<!-- Bandeau d'icônes sticky à gauche de l'écran -->
+<div class="icon-bar-sticky">
+
+  <!-- Icône pour basculer entre la vue carrousel et la vue album (Visible pour tous les utilisateurs) -->
+  <%= link_to album_path(@album, view: params[:view] == 'full' ? nil : 'full'), id: 'toggle-view-btn', class: 'icon-btn', title: params[:view] == 'full' ? 'Vue Carrousel' : 'Vue Album' do %>
+    <i class="fas <%= params[:view] == 'full' ? 'fa-images' : 'fa-th' %>"></i>
+  <% end %>
+
+  <!-- Icône pour basculer entre le mode sombre et le mode clair (Visible pour tous les utilisateurs) -->
+  <%= link_to '#', id: 'theme-toggle-btn', class: 'icon-btn' do %>
+    <i class="fas fa-moon"></i> <!-- Icône lune pour mode sombre -->
+  <% end %>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <!-- Icône pour ajouter une photo (Visible uniquement pour l'admin) -->
     <%= link_to '#', id: 'toggle-form-btn', class: 'icon-btn' do %>
       <i class="fas fa-plus"></i>
     <% end %>
 
-    <!-- Icône pour supprimer l'album -->
-    <%= link_to @album, method: :delete, data: { confirm: 'Es-tu sûr?' }, class: 'icon-btn', title: 'Supprimer l\'album' do %>
+    <!-- Icône pour supprimer l'album (Visible uniquement pour l'admin) -->
+    <%= link_to @album, method: :delete, data: { confirm: 'Es-tu sûr de vouloir supprimer ton album ?' }, class: 'icon-btn', title: 'Supprimer l\'album' do %>
       <i class="fas fa-times"></i>
     <% end %>
 
-<!-- Icône pour basculer entre la vue carrousel et la vue album -->
-<%= link_to album_path(@album, view: params[:view] == 'full' ? nil : 'full'), id: 'toggle-view-btn', class: 'icon-btn', title: params[:view] == 'full' ? 'Vue Carrousel' : 'Vue Album' do %>
-  <i class="fas <%= params[:view] == 'full' ? 'fa-images' : 'fa-th' %>"></i>
-<% end %>
-
-<% if params[:view] == 'full' %>
-  <!-- Icône pour supprimer des photos, visible seulement en mode album -->
-  <%= link_to '#', id: 'toggle-delete-mode-btn', class: 'icon-btn', title: 'Supprimer des photos' do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
-<% end %>
-
-    <!-- Icône pour basculer entre le mode sombre et le mode clair -->
-    <%= link_to '#', id: 'theme-toggle-btn', class: 'icon-btn' do %>
-      <i class="fas fa-moon"></i> <!-- Icône lune pour mode sombre -->
+    <% if params[:view] == 'full' %>
+      <!-- Icône pour supprimer des photos, visible seulement en mode album (Visible uniquement pour l'admin) -->
+      <%= link_to '#', id: 'toggle-delete-mode-btn', class: 'icon-btn', title: 'Supprimer des photos' do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
     <% end %>
-  </div>
+  <% end %>
 
+</div>
+
+<% if user_signed_in? && current_user.admin? %>
   <!-- Formulaire caché initialement -->
   <div id="photo-form-container" class="form-container" style="display: none;">
     <%= form_with model: [@album, Photo.new], local: true, html: { class: 'photo-form' } do |f| %>
