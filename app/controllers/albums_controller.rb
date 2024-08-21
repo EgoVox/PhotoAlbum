@@ -98,11 +98,11 @@ def unlock_private_albums
     @photos = @album.photos
   end
 
-  def delete_photos
-    @photos = @album.photos.where(id: params[:photo_ids])
-    @photos.destroy_all
-    redirect_to edit_photos_album_path(@album), notice: 'Suppression effectuée.'
-  end
+def delete_photos
+  @photos = @album.photos.where(id: params[:photo_ids])
+  @photos.destroy_all
+  redirect_to album_path(@album, view: 'full'), notice: 'Les photos ont été supprimées.'
+end
 
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur
   private

@@ -1,23 +1,83 @@
-/* Thème clair (par défaut) */
-body {
-  background-color: white;
-  color: black;
+/* Mode sombre : fond sombre, texte clair */
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+  /* Texte clair */
 }
 
-/* Thème sombre */
-body.dark-theme {
-  background-color: black;
-  color: white;
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p {
+  color: #f1f1f1;
+  /* Texte clair pour les titres et les paragraphes */
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+.dark-mode .btn-primary,
+.dark-mode .btn-danger,
+.dark-mode .btn-back {
+  background-color: #444;
+  /* Boutons avec fond plus sombre */
+  color: #f1f1f1;
+  /* Texte clair sur les boutons */
+  border-color: #555;
+  /* Bordure plus visible en mode sombre */
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.dark-mode .icon-bar-sticky {
+  background-color: #333;
+  /* Barre d'icônes plus sombre */
+}
+
+.dark-mode .icon-bar-sticky .icon-btn {
+  color: #f1f1f1;
+  /* Icônes en blanc pour contraste */
+}
+
+.dark-mode .icon-bar-sticky .icon-btn:hover {
+  background-color: #575757;
+  /* Couleur de survol en mode sombre */
+}
+
+.dark-mode .modal-content {
+  border: 2px solid #f1f1f1;
+  /* Bordure claire pour l'image modale */
+}
+
+.dark-mode .close {
+  color: #f1f1f1;
+  /* Bouton de fermeture clair */
+}
+
+.dark-mode .album-title-high,
+.dark-mode .album-title-light {
+  color: #f1f1f1;
+  /* Couleur du texte pour les titres d'album */
+}
+
+.dark-mode .back-link a {
+  color: #f1f1f1;
+  /* Lien retour visible */
+}
+
+// .dark-mode .photo-grid .photo-item img {
+//   // border: 2px solid #f1f1f1;
+//   /* Bordure pour les images en mode sombre */
+// }
+
+/* Mode sombre pour le champ de description */
+.dark-mode .photo-form .form-textarea {
+  background-color: #333; /* Fond sombre pour le champ de texte */
+  color: #f1f1f1; /* Texte clair */
+  border: 1px solid #555; /* Bordure plus visible en mode sombre */
+}
+
+.dark-mode .photo-form .form-label {
+  color: #f1f1f1; /* Couleur du texte des labels */
+}
+
+.dark-mode .photo-form .form-input {
+  background-color: #333; /* Fond sombre pour les champs d'entrée */
+  color: #f1f1f1; /* Texte clair */
+  border: 1px solid #555; /* Bordure plus visible en mode sombre */
 }
