@@ -8,6 +8,7 @@
 // import "controllers";
 // import "./carousel";
 // import "./displayForm";
+// import "./displayForm";
 
 //= require rails-ujs
 //= require carousel
