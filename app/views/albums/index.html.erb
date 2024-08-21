@@ -4,6 +4,10 @@
   <% end %>
 </div>
 
+<% unless user_signed_in? && current_user.admin? %>
+  <%= link_to 'Afficher les Albums Privés', private_albums_albums_path, id: 'show-private-albums', class: 'btn-show-private-albums' %>
+<% end %>
+
 <div class="albums-container">
   <% @albums.each do |album| %>
     <div class="album-preview">
@@ -15,13 +19,8 @@
             <%= image_tag 'default_album.jpg', class: "album-thumbnail", alt: "Album vide" %>
           <% end %>
         <% end %>
-        <% if user_signed_in? && current_user.admin? %>
-          <%= link_to edit_photos_album_path(album), class: 'edit-icon' do %>
-            <i class="fas fa-edit"></i> <!-- Icône Font Awesome -->
-          <% end %>
-        <% end %>
       </div>
-      <h2 class="album-title-light">
+      <h2 class="album-title">
         <%= album.name %> (<%= album.photos.count %>)
       </h2>
     </div>

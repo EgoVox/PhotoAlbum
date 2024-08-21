@@ -4,7 +4,39 @@ class AlbumsController < ApplicationController
 
   # On récupère tous les albums et on les stocke dans la variable @albums
   def index
-    @albums = Album.all
+    if current_user&.admin?
+      @albums = Album.all
+    else
+      # Affichez les albums publics + ceux déverrouillés
+      @albums = Album.where(private: false).or(Album.where(id: session[:unlocked_albums_ids]))
+      Rails.logger.info "Albums visibles: #{@albums.map(&:name)}"
+    end
+  end
+
+  def private_albums
+    @albums = Album.where(private: true)
+  end
+
+
+def unlock_private_albums
+    @unlocked_albums = []
+
+    Album.where(private: true).each do |album|
+      if correct_password(album, params[:password])
+        @unlocked_albums << album
+        session[:unlocked_albums_ids] ||= []
+        session[:unlocked_albums_ids] << album.id unless session[:unlocked_albums_ids].include?(album.id)
+        Rails.logger.info "Album déverrouillé: #{album.name} (ID: #{album.id})"
+      end
+    end
+
+    if @unlocked_albums.any?
+      Rails.logger.info "Albums déverrouillés: #{@unlocked_albums.map(&:name)}"
+      redirect_to albums_path, notice: 'Albums privés déverrouillés.'
+    else
+      Rails.logger.info "Mot de passe incorrect"
+      redirect_to root_path, alert: "Mot de passe incorrect"
+    end
   end
 
   # On récupère les photos de l'album et on les stocke dans la variable @photos pour les afficher dans la show
@@ -75,13 +107,16 @@ class AlbumsController < ApplicationController
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur
   private
 
-  # On récupère l'album en fonction de l'id passé dans les paramètres
+def correct_password(album, password_attempt)
+    # Remplacez par votre logique d'authentification du mot de passe
+    album.authenticate(password_attempt)
+  end
+
   def set_album
     @album = Album.find_by!(slug: params[:id])
   end
 
-  # On définit les paramètres autorisés pour la création et la mise à jour d'un album
   def album_params
-    params.require(:album).permit(:name, :year, :slug)
+    params.require(:album).permit(:name, :year, :slug, :private, :password)
   end
 end
