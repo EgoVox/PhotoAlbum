@@ -2,6 +2,10 @@
 
 <%= render 'carousel', photos: @photos %>
 
+<div class="theme-toggle-container" style="text-align: right; margin-bottom: 20px;">
+  <button id="theme-toggle-btn" class="btn-primary">Mode sombre</button>
+</div>
+
 <% if user_signed_in? && current_user.admin? %>
   <div class="photo-management">
 
@@ -32,9 +36,30 @@
         </div>
       <% end %>
     </div>
+
+    <!-- Bouton pour basculer entre le carrousel et la vue en grille -->
+    <div style="margin-top: 20px;">
+      <%= link_to params[:view] == 'full' ? 'Vue Carrousel' : 'Vue Album', album_path(@album, view: params[:view] == 'full' ? nil : 'full'), class: 'btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<!-- Affichage des photos en dessous du carrousel si la vue complète est activée -->
+<% if params[:view] == 'full' %>
+  <div class="photo-grid">
+    <% @photos.each do |photo| %>
+      <div class="photo-item">
+        <%= image_tag photo.image, class: "photo-fullsize" %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
 <div class="back-link" style="margin-top: 40px; text-align: center;">
   <%= link_to 'Retour aux albums', root_path, class: 'btn-back' %>
+</div>
+
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
 </div>

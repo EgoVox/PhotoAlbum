@@ -1,21 +1,28 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
+  # Root route
   root "albums#index"
 
+  # Albums routes
   resources :albums do
+    # Photos routes nested within albums
     resources :photos, only: [:create, :destroy]
 
-  member do
-    post "edit_inline"
-    get 'edit_photos' # Route pour afficher la page d'édition des photos
-    delete 'delete_photos', to: 'albums#delete_photos' # Route pour supprimer les photos sélectionnées
+    # Collection routes (apply to the entire collection of albums)
+    collection do
+      get 'private_albums' # Route to display the private albums form
+      post 'unlock_private_albums' # Route to unlock private albums
+    end
+
+    # Member routes (apply to individual albums)
+    member do
+      post "edit_inline" # Route for inline editing of an album
+      get 'edit_photos' # Route to display the photo editing page
+      delete 'delete_photos', to: 'albums#delete_photos' # Route to delete selected photos
     end
   end
 end

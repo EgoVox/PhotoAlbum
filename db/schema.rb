@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_20_125047) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_21_091039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_125047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.boolean "private", default: false
+    t.string "password"
+    t.string "password_digest"
+    t.boolean "unlocked"
     t.index ["slug"], name: "index_albums_on_slug", unique: true
   end
 

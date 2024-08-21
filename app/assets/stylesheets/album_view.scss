@@ -1,0 +1,23 @@
+.photo-grid {
+  column-count: 4;
+  /* Nombre de colonnes */
+  column-gap: 16px;
+  /* Espace entre les colonnes */
+  margin-top: 20px;
+}
+
+.photo-item {
+  break-inside: avoid;
+  /* Empêche les images de se briser entre les colonnes */
+  margin-bottom: 16px;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  /* Ajoute des coins arrondis si nécessaire */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Ajoute une ombre subtile */
+}

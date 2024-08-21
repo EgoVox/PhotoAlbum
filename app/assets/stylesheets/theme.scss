@@ -1,0 +1,23 @@
+/* Thème clair (par défaut) */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Thème sombre */
+body.dark-theme {
+  background-color: black;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
