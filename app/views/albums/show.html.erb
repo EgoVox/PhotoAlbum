@@ -2,57 +2,73 @@
 
 <%= render 'carousel', photos: @photos %>
 
-<div class="theme-toggle-container" style="text-align: right; margin-bottom: 20px;">
-  <button id="theme-toggle-btn" class="btn-primary">Mode sombre</button>
-</div>
-
 <% if user_signed_in? && current_user.admin? %>
-  <div class="photo-management">
+  <!-- Bandeau d'icônes sticky à gauche de l'écran -->
+  <div class="icon-bar-sticky">
+    <!-- Icône pour ajouter une photo -->
+    <%= link_to '#', id: 'toggle-form-btn', class: 'icon-btn' do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
 
-    <div class="button-group">
-      <!-- Bouton pour afficher le formulaire -->
-      <button id="toggle-form-btn" class="btn-primary">Ajouter une photo</button>
+    <!-- Icône pour supprimer l'album -->
+    <%= link_to @album, method: :delete, data: { confirm: 'Es-tu sûr?' }, class: 'icon-btn', title: 'Supprimer l\'album' do %>
+      <i class="fas fa-times"></i>
+    <% end %>
 
-      <!-- Boutons pour supprimer des photos et l'album -->
-      <%= link_to 'Supprimer des photos', edit_photos_album_path, class: 'btn-danger' %>
-      <%= link_to 'Supprimer l\'album', @album, method: :delete, data: { confirm: 'Es-tu sûr?' }, class: 'btn-danger' %>
-    </div>
+<!-- Icône pour basculer entre la vue carrousel et la vue album -->
+<%= link_to album_path(@album, view: params[:view] == 'full' ? nil : 'full'), id: 'toggle-view-btn', class: 'icon-btn', title: params[:view] == 'full' ? 'Vue Carrousel' : 'Vue Album' do %>
+  <i class="fas <%= params[:view] == 'full' ? 'fa-images' : 'fa-th' %>"></i>
+<% end %>
 
-    <!-- Formulaire caché initialement -->
-    <div id="photo-form-container" class="form-container" style="display: none;">
-      <%= form_with model: [@album, Photo.new], local: true, html: { class: 'photo-form' } do |f| %>
-        <div class="form-group">
-          <%= f.label :image, "Ajouter une image", class: 'form-label' %>
-          <%= f.text_field :image, class: 'form-input' %>
-        </div>
+<% if params[:view] == 'full' %>
+  <!-- Icône pour supprimer des photos, visible seulement en mode album -->
+  <%= link_to '#', id: 'toggle-delete-mode-btn', class: 'icon-btn', title: 'Supprimer des photos' do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+<% end %>
 
-        <div class="form-group">
-          <%= f.label :description, "Description", class: 'form-label' %>
-          <%= f.text_area :description, class: 'form-textarea' %>
-        </div>
+    <!-- Icône pour basculer entre le mode sombre et le mode clair -->
+    <%= link_to '#', id: 'theme-toggle-btn', class: 'icon-btn' do %>
+      <i class="fas fa-moon"></i> <!-- Icône lune pour mode sombre -->
+    <% end %>
+  </div>
 
-        <div class="form-actions">
-          <%= f.submit 'Ajouter une photo', class: 'btn-primary' %>
-        </div>
-      <% end %>
-    </div>
+  <!-- Formulaire caché initialement -->
+  <div id="photo-form-container" class="form-container" style="display: none;">
+    <%= form_with model: [@album, Photo.new], local: true, html: { class: 'photo-form' } do |f| %>
+      <div class="form-group">
+        <%= f.label :image, "Ajouter une image", class: 'form-label' %>
+        <%= f.text_field :image, class: 'form-input' %>
+      </div>
 
-    <!-- Bouton pour basculer entre le carrousel et la vue en grille -->
-    <div style="margin-top: 20px;">
-      <%= link_to params[:view] == 'full' ? 'Vue Carrousel' : 'Vue Album', album_path(@album, view: params[:view] == 'full' ? nil : 'full'), class: 'btn-primary' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :description, "Description", class: 'form-label' %>
+        <%= f.text_area :description, class: 'form-textarea' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit 'Ajouter une photo', class: 'btn-primary' %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
 <!-- Affichage des photos en dessous du carrousel si la vue complète est activée -->
 <% if params[:view] == 'full' %>
-  <div class="photo-grid">
-    <% @photos.each do |photo| %>
-      <div class="photo-item">
-        <%= image_tag photo.image, class: "photo-fullsize" %>
-      </div>
-    <% end %>
-  </div>
+  <%= form_with url: delete_photos_album_path(@album), method: :delete, id: 'delete-photos-form' do %>
+    <div class="photo-grid">
+      <% @photos.each do |photo| %>
+        <div class="photo-item">
+          <label class="photo-checkbox-label">
+            <%= check_box_tag 'photo_ids[]', photo.id, false, class: 'photo-checkbox', style: 'display: none;' %>
+            <%= image_tag photo.image, class: "photo-fullsize" %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <%= submit_tag 'Supprimer les photos sélectionnées', data: { confirm: 'Veux-tu vraiment supprimer ces photos ?' }, class: 'btn-danger', id: 'delete-photos-submit', style: 'display: none;' %>
+  <% end %>
 <% end %>
 
 <div class="back-link" style="margin-top: 40px; text-align: center;">

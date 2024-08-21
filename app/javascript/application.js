@@ -12,8 +12,11 @@
 
 //= require rails-ujs
 //= require carousel
-//= require displayForm
+//= require theme
 //= require modal
-//= require bascule
+//= require form
+//= require deleteMode
+
+
 
 import "controllers";
