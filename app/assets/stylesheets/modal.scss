@@ -1,33 +1,26 @@
 /* Style pour la modale */
 .modal {
   display: none;
-  /* Cache la modale par défaut */
   position: fixed;
-  /* Positionne la modale en superposition */
   z-index: 1000;
-  /* Assure que la modale soit au-dessus des autres éléments */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  /* Fond noir semi-transparent */
+  display: flex;
   justify-content: center;
-  /* Centre horizontalement */
   align-items: center;
-  /* Centre verticalement */
 }
 
 /* Style pour l'image dans la modale */
 .modal-content {
-  max-width: 90%;
-  /* Assure que l'image ne dépasse pas la largeur de la fenêtre */
-  max-height: 90%;
-  /* Assure que l'image ne dépasse pas la hauteur de la fenêtre */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Conserve le rapport d'aspect */
   border-radius: 8px;
-  /* Coins arrondis */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Ombre subtile */
 }
 
 /* Style pour le bouton de fermeture */
@@ -50,11 +43,9 @@
 
 .main-image-element {
   cursor: zoom-in;
-  /* Icône de zoom sur la main image */
 }
 
 /* Curseur personnalisé sur les images en mode album */
 .photo-fullsize {
   cursor: zoom-in;
-  /* Icône de zoom sur les photos en mode album */
 }
