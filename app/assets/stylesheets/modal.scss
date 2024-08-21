@@ -47,3 +47,14 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.main-image-element {
+  cursor: zoom-in;
+  /* Icône de zoom sur la main image */
+}
+
+/* Curseur personnalisé sur les images en mode album */
+.photo-fullsize {
+  cursor: zoom-in;
+  /* Icône de zoom sur les photos en mode album */
+}
