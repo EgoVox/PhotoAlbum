@@ -45,6 +45,7 @@
 
   &.active-thumbnail {
     border: 2px solid $primary-color;
+    border-radius: $border-radius;
     /* Ajout d'une bordure pour l'image active */
   }
 }
