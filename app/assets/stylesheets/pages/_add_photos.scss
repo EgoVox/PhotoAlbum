@@ -1,0 +1,110 @@
+// Import des variables et mixins pour les réutiliser dans les styles d'ajout de photos
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour la gestion de l'ajout de photos
+.photo-management {
+  margin-top: 20px;
+  /* Espace au-dessus de la section de gestion des photos */
+}
+
+.form-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: $form-background-color;
+  /* Couleur de fond du formulaire */
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  box-shadow: $box-shadow;
+  /* Ombre subtile */
+}
+
+// Styles pour les groupes de champs dans le formulaire
+.form-group {
+  margin-bottom: 15px;
+  /* Espace en dessous de chaque groupe de champs */
+}
+
+// Styles pour les labels du formulaire
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: $text-color-dark;
+  /* Couleur du texte des labels */
+}
+
+// Styles pour les champs de saisie et les zones de texte du formulaire
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid $input-border-color;
+  /* Couleur de bordure des champs */
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: $input-focus-border-color;
+  /* Couleur de bordure en mode focus */
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+  /* Hauteur par défaut des zones de texte */
+}
+
+// Styles pour les actions du formulaire
+.form-actions {
+  text-align: right;
+  /* Aligne les boutons à droite */
+}
+
+// Styles pour les boutons de soumission et d'action
+.btn-submit {
+  @include button-base($btn-submit-background, $btn-submit-hover-background);
+  /* Utilise un mixin pour un style de bouton cohérent */
+}
+
+.btn-delete-photos,
+.btn-delete-album,
+.btn-back {
+  display: inline-block;
+  background-color: $btn-danger-background;
+  /* Couleur de fond des boutons de suppression */
+  color: $btn-text-color;
+  /* Couleur du texte des boutons */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-delete-photos:hover,
+.btn-delete-album:hover,
+.btn-back:hover {
+  background-color: $btn-danger-hover-background;
+  /* Couleur de fond au survol des boutons */
+  transform: translateY(-2px);
+}
+
+// Styles spécifiques pour le bouton de retour
+.btn-back {
+  background-color: $btn-secondary-background;
+  /* Couleur de fond des boutons de retour */
+}
+
+.btn-back:hover {
+  background-color: $btn-secondary-hover-background;
+  /* Couleur de fond au survol des boutons de retour */
+}

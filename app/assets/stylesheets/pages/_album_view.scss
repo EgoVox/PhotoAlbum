@@ -1,0 +1,63 @@
+// Import des variables et mixins pour les réutiliser dans les styles de la vue album
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour la grille de photos dans la vue album
+.photo-grid {
+  column-count: 4;
+  /* Nombre de colonnes pour la grille de photos */
+  column-gap: 16px;
+  /* Espace entre les colonnes */
+  margin-top: 20px;
+  /* Espace au-dessus de la grille */
+}
+
+.photo-item {
+  break-inside: avoid;
+  /* Empêche les images de se briser entre les colonnes */
+  margin-bottom: $spacing-medium;
+  /* Ajoute un espace sous chaque photo */
+  border-radius: $border-radius;
+  overflow: hidden;
+  /* Empêche le contenu de déborder */
+  box-shadow: $box-shadow-light;
+  /* Ajoute une ombre subtile */
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  object-fit: cover;
+  /* S'assure que l'image remplisse son conteneur */
+  box-shadow: $box-shadow-light;
+  /* Ombre subtile */
+}
+
+// Styles pour les cases à cocher lors de la suppression de photos
+.photo-checkbox-label {
+  display: block;
+  position: relative;
+}
+
+.photo-checkbox {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+// Styles pour les images en mode pleine taille
+.photo-fullsize {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: $border-radius;
+}

@@ -1,0 +1,149 @@
+// _variables.scss
+
+// Couleurs
+$primary-color: #444;
+$secondary-color: #6c757d;
+$danger-color: #dc3545;
+$dark-color: #333;
+$light-color: #f9f9f9;
+$white-color: #fff;
+$black-color: #000;
+$gray-color: #ccc;
+$gray-dark-color: #666;
+$background-dark-color: #121212;
+$background-color-light: #f9f9f9;
+$dark-background-color: #333;
+$dark-border-color: #444;
+$background-color: #f9f9f9;
+$text-light-color: #f1f1f1;
+$text-dark-color: #333;
+$text-color: #121212;
+$link-color: #007bff;
+$link-hover-color: darken($link-color, 10%);
+$btn-bg-color: #007bff;
+$btn-hover-bg-color: darken($btn-bg-color, 10%);
+$heading-color: #333;
+$header-background-color: #333;
+$header-text-color: #f9f9f9;
+$header-logo-color: #f9f9f9;
+$header-logo-hover-color: darken($header-logo-color, 30%);
+$header-nav-link-color: #f9f9f9;
+$header-nav-link-hover-color: #333;
+$dark-header-background-color: #333;
+$dark-header-text-color: #f9f9f9;
+$dark-header-logo-color: #f9f9f9;
+$dark-header-logo-hover-color: #f9f9f9;
+$dark-header-nav-link-color: #f9f9f9;
+$dark-header-nav-link-hover-color: #f9f9f9;
+$footer-background-color: #333;
+$footer-text-color: #f9f9f9;
+$footer-link-color: #007bff;
+$footer-link-hover-color: darken($footer-link-color, 10%);
+$footer-border-color: #ccc;
+$dark-footer-background-color: #333;
+$dark-footer-text-color: #f9f9f9;
+$dark-footer-link-color: #007bff;
+$dark-footer-link-hover-color: darken($dark-footer-link-color, 10%);
+$dark-footer-border-color: #444;
+$nav-btn-bg-color: #007bff;
+$nav-btn-hover-bg-color: darken($nav-btn-bg-color, 10%);
+$flash-notice-bg-color: #28a745;
+$flash-notice-text-color: #fff;
+$flash-notice-border-color: #218838;
+$flash-alert-bg-color: #dc3545;
+$flash-alert-text-color: #fff;
+$flash-alert-border-color: #c82333;
+$dark-container-background-color: #333;
+$dark-box-shadow-light: rgba(0, 0, 0, 0.1);
+$success-color: #28a745;
+$text-color-dark: #333;
+$hover-background: #f9f9f9;
+$border-color: #ccc;
+$danger-background: #f8d7da;
+$danger-text-color: #721c24;
+$danger-border-color: #f5c6cb;
+$modal-border-color: #ccc;
+$close-btn-color: #333;
+$close-btn-hover-color: #000;
+$icon-btn-color: #333;
+$icon-btn-hover-bg-color: #f9f9f9;
+$text-color-light: #f9f9f9;
+$form-background-color: #f9f9f9;
+$input-border-color: #ccc;
+$input-focus-border-color: #007bff;
+$btn-submit-background: #28a745;
+$btn-submit-hover-background: darken($btn-submit-background, 10%);
+$btn-danger-background: #dc3545;
+$btn-text-color: #fff;
+$btn-danger-hover-background: darken($btn-danger-background, 10%);
+$btn-secondary-background: #6c757d;
+$btn-secondary-hover-background: darken($btn-secondary-background, 10%);
+$btn-success-background: #28a745;
+$btn-success-hover-background: darken($btn-success-background, 10%);
+$light-text-color: #f9f9f9;
+$dark-button-background: #333;
+$dark-button-border: #444;
+$dark-sticky-background: #333;
+$dark-hover-background: #444;
+$dark-input-background: #333;
+$dark-input-border: #444;
+
+
+// Polices
+$font-family-base: 'Arial', sans-serif;
+$font-family-heading: 'Arial', sans-serif;
+
+// Tailles de police
+$font-size-base: 16px;
+$font-size-large: 24px;
+$font-size-h1: 36px;
+$font-size-h2: 30px;
+$font-size-h3: 24px;
+$font-size-h4: 20px;
+$font-size-h5: 18px;
+$font-size-h6: 16px;
+$font-size-small: 14px;
+$font-size-medium: 18px;
+$font-weight-bold: bold;
+
+// Espacements
+$spacing-small: 10px;
+$spacing-medium: 20px;
+$spacing-large: 40px;
+$spacing-xlarge: 60px;
+$spacing-base: 20px;
+$spacing-extra-large: 80px;
+$spacing-xsmall: 5px;
+
+// Bordures
+$border-radius-base: 4px;
+$border-radius-large: 8px;
+$border-radius: 4px;
+$border-radius-small: 2px;
+
+
+// Ombres
+$box-shadow-base: 0 4px 8px rgba(0, 0, 0, 0.1);
+$box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-default: 0 4px 8px rgba(0, 0, 0, 0.1);
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Z-index
+$z-index-modal: 1000;
+$z-index-sticky-bar: 1000;
+
+// Transition
+$transition-base: all 0.3s ease;
+
+// Hauteur et largeur
+$width-full: 100%;
+$max-width-container: 1500px;
+$modal-max-width: 700px;
+
+// container
+$container-max-width : 1200px;
+$container-wide-max-width : 1400px;
+$container-background-color : #fff;
+
+// icon
+$icon-size-large: 32px;

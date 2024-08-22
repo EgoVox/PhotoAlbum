@@ -1,0 +1,32 @@
+// Import des variables et mixins pour les réutiliser dans les styles des conteneurs
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour le conteneur principal
+.container {
+  max-width: $container-max-width; // Largeur maximale du conteneur
+  margin: 0 auto; // Centre le conteneur horizontalement
+  padding: 0 $spacing-small; // Ajoute du padding à gauche et à droite
+}
+
+// Variations pour différents types de conteneurs
+
+// Conteneur pour les sections avec plus d'espace
+.container-wide {
+  max-width: $container-wide-max-width; // Largeur maximale pour un conteneur plus large
+  padding: 0 $spacing-large; // Padding plus large pour un conteneur plus grand
+}
+
+// Conteneur avec un arrière-plan
+.container-background {
+  background-color: $container-background-color; // Couleur de fond pour ce type de conteneur
+  padding: $spacing-medium; // Ajoute du padding tout autour du contenu
+  border-radius: $border-radius; // Coins arrondis
+  box-shadow: $box-shadow-light; // Ombre légère pour donner de la profondeur
+}
+
+// Mode sombre pour les conteneurs
+.dark-mode .container-background {
+  background-color: $dark-container-background-color; // Couleur de fond en mode sombre
+  box-shadow: $dark-box-shadow-light; // Ombre légère en mode sombre
+}

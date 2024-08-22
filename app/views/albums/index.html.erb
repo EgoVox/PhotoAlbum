@@ -23,6 +23,12 @@
       <h2 class="album-title">
         <%= album.name %> (<%= album.photos.count %>)
       </h2>
+
+      <% if user_signed_in? && current_user.admin? %>
+        <%= link_to edit_album_path(album), class: 'edit-album-btn', title: "Modifier l'album" do %>
+          <i class="fas fa-edit"></i> <!-- Icône d'édition -->
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>

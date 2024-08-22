@@ -1,0 +1,89 @@
+// Import des variables et mixins pour les réutiliser dans les styles de la page de connexion
+@import 'base/variables';
+@import 'base/mixins';
+
+// Conteneur principal pour centrer le formulaire de connexion
+.login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: $form-background-color;
+  /* Couleur de fond du formulaire */
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  box-shadow: $box-shadow;
+  /* Ombre subtile */
+}
+
+// Style des labels dans le formulaire de connexion
+.login-label {
+  font-weight: bold;
+  color: $text-color-dark;
+  /* Couleur du texte des labels */
+  margin-bottom: 5px;
+  display: block;
+}
+
+// Style des champs de saisie dans le formulaire de connexion
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid $input-border-color;
+  /* Couleur de bordure des champs */
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: $input-focus-border-color;
+  /* Couleur de bordure en mode focus */
+  outline: none;
+}
+
+// Style pour la case à cocher "Remember me"
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.login-checkbox {
+  margin-right: 5px;
+}
+
+// Style du bouton de connexion
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: $btn-success-background;
+  /* Couleur de fond du bouton de connexion */
+  color: $btn-text-color;
+  /* Couleur du texte du bouton */
+  font-size: 16px;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: $btn-success-hover-background;
+  /* Couleur de fond au survol du bouton de connexion */
+  transform: translateY(-2px);
+}
+
+// Style des liens sous le formulaire
+.login-form a {
+  color: $link-color;
+  /* Couleur des liens */
+  text-decoration: none;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
+  /* Style des liens au survol */
+}

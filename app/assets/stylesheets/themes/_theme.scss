@@ -1,0 +1,102 @@
+// Import des variables et mixins pour les réutiliser dans les styles du thème
+@import 'base/variables';
+@import 'base/mixins';
+
+// Mode sombre : fond sombre, texte clair
+.dark-mode {
+  background-color: $dark-background-color;
+  color: $light-text-color;
+  /* Texte clair pour tout le corps de la page */
+}
+
+// Styles spécifiques pour les éléments de texte en mode sombre
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p {
+  color: $light-text-color;
+  /* Couleur des titres et paragraphes en mode sombre */
+}
+
+// Boutons en mode sombre
+.dark-mode .btn-primary,
+.dark-mode .btn-danger,
+.dark-mode .btn-back {
+  background-color: $dark-button-background;
+  /* Couleur de fond des boutons */
+  color: $light-text-color;
+  /* Texte clair sur les boutons */
+  border-color: $dark-button-border;
+  /* Bordure plus visible en mode sombre */
+}
+
+// Barre d'icônes sticky en mode sombre
+.dark-mode .icon-bar-sticky {
+  background-color: $dark-sticky-background;
+  /* Fond sombre pour la barre d'icônes */
+}
+
+.dark-mode .icon-bar-sticky .icon-btn {
+  color: $light-text-color;
+  /* Icônes en blanc pour contraste */
+}
+
+.dark-mode .icon-bar-sticky .icon-btn:hover {
+  background-color: $dark-hover-background;
+  /* Couleur de survol en mode sombre */
+}
+
+// Contenu de la modale en mode sombre
+.dark-mode .modal-content {
+  border: 2px solid $light-text-color;
+  /* Bordure claire pour l'image modale */
+}
+
+// Bouton de fermeture de la modale en mode sombre
+.dark-mode .close {
+  color: $light-text-color;
+  /* Bouton de fermeture clair */
+}
+
+// Titres des albums en mode sombre
+.dark-mode .album-title-high,
+.dark-mode .album-title-light {
+  color: $light-text-color;
+  /* Couleur du texte pour les titres d'album */
+}
+
+// Lien retour en mode sombre
+.dark-mode .back-link a {
+  color: $light-text-color;
+  /* Lien retour visible */
+}
+
+// Champ de description en mode sombre
+.dark-mode .photo-form .form-textarea {
+  background-color: $dark-input-background;
+  /* Fond sombre pour le champ de texte */
+  color: $light-text-color;
+  /* Texte clair */
+  border: 1px solid $dark-input-border;
+  /* Bordure plus visible en mode sombre */
+}
+
+// Labels en mode sombre
+.dark-mode .photo-form .form-label {
+  color: $light-text-color;
+  /* Couleur du texte des labels */
+}
+
+// Champs d'entrée en mode sombre
+.dark-mode .photo-form .form-input {
+  background-color: $dark-input-background;
+  /* Fond sombre pour les champs d'entrée */
+  color: $light-text-color;
+  /* Texte clair */
+  border: 1px solid $dark-input-border;
+  /* Bordure plus visible en mode sombre */
+}
+
+.dark-mode .image-description {
+  color: $text-light-color; // Utilise la couleur de texte clair définie dans vos variables
+}
