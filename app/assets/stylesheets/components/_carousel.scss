@@ -50,6 +50,16 @@
   }
 }
 
+.dark-mode .thumbnail {
+  border: 2px solid $dark-border-color;
+  /* Bordure par défaut en mode sombre */
+
+  &.active-thumbnail {
+    border: 2px solid $text-light-color;
+    /* Bordure blanche pour l'image active en mode sombre */
+  }
+}
+
 // Styles pour les images des miniatures
 .thumbnail-image {
   width: 100%;
