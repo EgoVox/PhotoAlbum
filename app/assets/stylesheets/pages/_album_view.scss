@@ -22,6 +22,7 @@
   /* Empêche le contenu de déborder */
   box-shadow: $box-shadow-light;
   /* Ajoute une ombre subtile */
+
 }
 
 .photo-item img {
@@ -40,6 +41,11 @@
 .photo-checkbox-label {
   display: block;
   position: relative;
+  margin: 0;
+    /* Assurez-vous qu'il n'y a pas de marge supplémentaire */
+    padding: 0;
+    /* Supprimez tout padding qui pourrait causer un problème */
+    height: 100%;
 }
 
 .photo-checkbox {
