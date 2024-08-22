@@ -1,0 +1,56 @@
+// Import des variables et mixins pour les réutiliser dans les styles du footer
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour le footer
+footer {
+  background-color: $footer-background-color; // Couleur de fond du footer
+  color: $footer-text-color; // Couleur du texte dans le footer
+  padding: $spacing-large 0; // Ajout de padding en haut et en bas du footer
+  text-align: center; // Centrage du texte dans le footer
+  margin-top: $spacing-extra-large; // Espace au-dessus du footer
+
+  // Texte dans le footer
+  p {
+    margin: 0;
+    font-size: $font-size-small; // Taille de la police pour le texte du footer
+  }
+
+  // Liens sociaux dans le footer
+  .social-links {
+    list-style: none; // Retire les puces des listes
+    padding: 0;
+    margin: $spacing-small 0 0 0; // Espace au-dessus des icônes sociales
+    display: flex;
+    justify-content: center; // Centre les icônes sociales horizontalement
+
+    li {
+      margin: 0 $spacing-small; // Espace entre chaque icône sociale
+
+      a {
+        color: $footer-text-color; // Couleur des icônes sociales
+        text-decoration: none; // Retire la sous-ligne des liens
+        font-size: $font-size-large; // Taille des icônes sociales
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $footer-link-hover-color; // Couleur des icônes au survol
+        }
+      }
+    }
+  }
+}
+
+// Mode sombre pour le footer
+.dark-mode footer {
+  background-color: $dark-footer-background-color; // Fond sombre en mode sombre
+  color: $dark-footer-text-color; // Texte clair en mode sombre
+
+  .social-links li a {
+    color: $dark-footer-text-color; // Couleur des icônes sociales en mode sombre
+
+    &:hover {
+      color: $dark-footer-link-hover-color; // Couleur des icônes au survol en mode sombre
+    }
+  }
+}

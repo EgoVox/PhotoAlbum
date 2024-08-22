@@ -1,0 +1,210 @@
+// Import des variables et mixins pour les réutiliser dans les styles des formulaires
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles généraux pour les formulaires
+.form-container {
+  margin-top: $spacing-medium;
+  padding: $spacing-medium;
+  background-color: $background-color-light;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-default;
+}
+
+// Styles pour les groupes de champs dans les formulaires
+.form-group {
+  margin-bottom: $spacing-small;
+}
+
+// Styles pour les labels des champs de formulaire
+.form-label {
+  display: block;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-xsmall;
+  color: $text-color-dark;
+}
+
+// Styles pour les champs de texte et les zones de texte
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: $spacing-small;
+  font-size: $font-size-medium;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+// Styles spécifiques pour les zones de texte
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+// Styles pour les actions du formulaire (boutons de soumission)
+.form-actions {
+  text-align: right;
+}
+
+// Styles pour les messages d'erreur de formulaire
+#error_explanation {
+  background-color: $danger-background;
+  color: $danger-text-color;
+  border: 1px solid $danger-border-color;
+  border-radius: $border-radius;
+  padding: $spacing-small;
+  margin-bottom: $spacing-medium;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: $spacing-xsmall;
+  }
+}
+
+// Styles spécifiques pour les boutons dans les formulaires
+.btn-submit {
+  background-color: $success-color;
+  color: $white-color;
+  padding: $spacing-small $spacing-medium;
+  font-size: $font-size-medium;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: darken($success-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-delete-photos,
+.btn-delete-album,
+.btn-back {
+  display: inline-block;
+  background-color: $danger-color;
+  color: $white-color;
+  padding: $spacing-small $spacing-medium;
+  font-size: $font-size-medium;
+  border: none;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: $spacing-small;
+
+  &:hover {
+    background-color: darken($danger-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-back {
+  background-color: $secondary-color;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// Styles pour le formulaire de création d'album
+.album-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $spacing-medium;
+  background-color: $background-color-light;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-default;
+
+  .field {
+    margin-bottom: $spacing-small;
+  }
+}
+
+// Styles pour la page de login
+.login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: $spacing-medium;
+  background-color: $background-color-light;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-default;
+}
+
+// Styles pour les labels de login
+.login-label {
+  font-weight: $font-weight-bold;
+  color: $text-color-dark;
+  margin-bottom: $spacing-xsmall;
+  display: block;
+}
+
+// Styles pour les champs de texte de login
+.login-input {
+  width: 100%;
+  padding: $spacing-small;
+  margin-bottom: $spacing-small;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  font-size: $font-size-medium;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+// Styles pour la case à cocher "Remember me"
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-small;
+}
+
+.login-checkbox {
+  margin-right: $spacing-xsmall;
+}
+
+// Bouton de connexion spécifique à la page de login
+.login-button {
+  width: 100%;
+  padding: $spacing-small;
+  background-color: $success-color;
+  color: $white-color;
+  font-size: $font-size-medium;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($success-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// Lien sous le formulaire de login
+.login-form a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

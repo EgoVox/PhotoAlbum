@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "albums#index"
 
   # Albums routes
+  resources :albums, only: [:index, :show, :edit, :update]
   resources :albums do
     # Photos routes nested within albums
     resources :photos, only: [:create, :destroy]

@@ -1,0 +1,94 @@
+@import 'base/variables';
+@import 'base/mixins';
+
+// Grille de base pour les photos
+.photo-grid {
+  column-count: 4;
+  /* Nombre de colonnes pour la grille de photos */
+  column-gap: 16px;
+  /* Espace entre les colonnes */
+  margin-top: 20px;
+  /* Espace au-dessus de la grille */
+}
+
+.photo-item {
+  break-inside: avoid;
+  /* Empêche les images de se briser entre les colonnes */
+  margin-bottom: 16px;
+  /* Espace sous chaque photo */
+  overflow: hidden;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: $border-radius;
+  /* Coins arrondis */
+  box-shadow: $box-shadow;
+  /* Ombre subtile */
+}
+
+// Grille des miniatures (thumbnails) pour le carrousel
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-small;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  margin: 0 $spacing-small;
+  /* Espace entre les flèches et les miniatures */
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin: 0 $spacing-xsmall;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $border-radius-small;
+    box-shadow: $box-shadow-light;
+  }
+}
+
+.thumbnail.active-thumbnail {
+  border: 2px solid $primary-color;
+  /* Optionnel : ajout d'une bordure pour l'image active */
+}
+
+// Grille pour l'édition des photos
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-small;
+}
+
+.photo-thumbnail {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: scale(1.5);
+    z-index: 2;
+  }
+}

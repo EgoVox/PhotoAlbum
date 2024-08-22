@@ -1,0 +1,92 @@
+// Import des variables et mixins pour les réutiliser dans les styles du header
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour le header
+header {
+  background-color: $header-background-color; // Utilisation de la variable pour la couleur de fond du header
+  color: $header-text-color; // Couleur du texte du header
+  padding: $spacing-small 0; // Ajout d'un espacement vertical
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Ombre sous le header
+
+  // Logo dans le header
+  .logo {
+    h1 {
+      margin: 0;
+      font-size: $font-size-h1; // Taille de police pour le logo
+      font-family: $font-family-heading; // Police utilisée pour le logo
+      color: $header-logo-color; // Couleur du logo
+      text-transform: uppercase; // Met le texte en majuscules
+      letter-spacing: 2px; // Espacement entre les lettres
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); // Ombre pour donner de la profondeur
+
+      a {
+        text-decoration: none; // Retire la sous-ligne par défaut
+        color: inherit; // Hérite de la couleur du parent
+
+        &:hover {
+          color: $header-logo-hover-color; // Change la couleur au survol
+        }
+      }
+    }
+  }
+
+  // Navigation dans le header
+  nav {
+    ul {
+      list-style: none; // Retire les puces des listes
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end; // Aligne les éléments de navigation à droite
+      align-items: center;
+
+      li {
+        margin-left: $spacing-medium; // Espacement entre les éléments de navigation
+
+        a,
+        button {
+          color: $header-nav-link-color; // Couleur des liens de navigation
+          text-decoration: none; // Retire la sous-ligne des liens
+          font-size: $font-size-base; // Taille de police des liens
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $header-nav-link-hover-color; // Couleur au survol
+          }
+        }
+      }
+    }
+  }
+}
+
+// Styles pour les boutons de navigation
+.nav-btn {
+  @include button($nav-btn-bg-color, $nav-btn-hover-bg-color); // Utilisation d'un mixin pour les styles de boutons
+  border: none;
+  padding: $spacing-small $spacing-medium; // Espacement interne des boutons
+  border-radius: $border-radius-base; // Coins arrondis
+  cursor: pointer;
+}
+
+// Mode sombre pour le header
+.dark-mode header {
+  background-color: $dark-header-background-color; // Fond sombre en mode sombre
+  color: $dark-header-text-color; // Texte clair en mode sombre
+
+  .logo h1 {
+    color: $dark-header-logo-color; // Couleur du logo en mode sombre
+
+    &:hover {
+      color: $dark-header-logo-hover-color; // Couleur au survol en mode sombre
+    }
+  }
+
+  nav ul li a {
+    color: $dark-header-nav-link-color; // Couleur des liens de navigation en mode sombre
+
+    &:hover {
+      color: $dark-header-nav-link-hover-color; // Couleur au survol en mode sombre
+    }
+  }
+}

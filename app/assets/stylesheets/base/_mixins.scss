@@ -1,0 +1,136 @@
+// _mixins.scss
+
+// Mixin pour le centrage flexbox horizontal et vertical
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin pour le texte avec ombre et majuscule
+@mixin text-title($font-size, $letter-spacing: 1px, $text-transform: uppercase, $shadow-color: rgba(0, 0, 0, 0.1)) {
+  font-size: $font-size;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: $letter-spacing;
+  text-transform: $text-transform;
+  text-shadow: 2px 2px 4px $shadow-color;
+}
+
+@mixin button-base($background-color, $hover-background-color) {
+  background-color: $background-color;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: $hover-background-color;
+    transform: translateY(-2px);
+  }
+}
+
+// Mixin pour un bouton avec un état hover
+@mixin button($bg-color, $hover-bg-color) {
+  display: inline-block;
+  padding: $spacing-small $spacing-medium;
+  background-color: $bg-color;
+  color: $white-color;
+  border-radius: $border-radius-base;
+  text-decoration: none;
+  text-align: center;
+  transition: $transition-base;
+
+  &:hover {
+    background-color: $hover-bg-color;
+    transform: translateY(-2px);
+  }
+}
+
+// Mixin pour un formulaire de base
+@mixin form-element($border-color: $gray-color, $focus-color: $primary-color) {
+  width: 100%;
+  padding: $spacing-small;
+  font-size: $font-size-base;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-base;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: $focus-color;
+    outline: none;
+  }
+}
+
+// Mixin pour les ombres portées
+@mixin box-shadow($shadow-color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: 0 4px 8px $shadow-color;
+}
+
+// Mixin pour un conteneur centré avec padding
+@mixin container($max-width: $max-width-container, $padding: $spacing-medium) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $padding;
+}
+
+// Mixin pour les images avec bordures arrondies et ombre
+@mixin image-style($border-radius: $border-radius-large, $box-shadow: $box-shadow-base) {
+  width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  display: block;
+}
+
+// Mixin pour le mode sombre
+@mixin dark-mode {
+  background-color: $background-dark-color;
+  color: $text-light-color;
+
+  a,
+  .btn-primary,
+  .btn-danger,
+  .btn-back {
+    background-color: $dark-color;
+    color: $text-light-color;
+    border-color: $dark-color;
+
+    &:hover {
+      background-color: darken($dark-color, 10%);
+    }
+  }
+
+  .icon-bar-sticky {
+    background-color: $dark-color;
+
+    .icon-btn {
+      color: $text-light-color;
+
+      &:hover {
+        background-color: lighten($dark-color, 10%);
+      }
+    }
+  }
+
+  .modal-content {
+    border: 2px solid $text-light-color;
+  }
+
+  .close {
+    color: $text-light-color;
+  }
+}
+
+// Mixin pour les titres dans les formulaires
+@mixin form-title($font-size: $font-size-h3, $color: $text-dark-color) {
+  font-size: $font-size;
+  font-weight: bold;
+  margin-bottom: $spacing-small;
+  color: $color;
+}

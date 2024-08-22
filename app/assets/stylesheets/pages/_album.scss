@@ -1,0 +1,190 @@
+// Import des variables et mixins pour les réutiliser dans les styles des albums
+@import 'base/variables';
+@import 'base/mixins';
+
+// Styles pour l'affichage des albums dans la page d'index
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+// Styles pour la prévisualisation d'un album
+.album-preview {
+  flex: 0 0 calc(33.333% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.album-thumbnail {
+  width: 450px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: $border-radius; // Utilise la variable de rayon de bordure
+  box-shadow: $box-shadow; // Utilise la variable d'ombre portée
+  display: block;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Styles pour le titre de l'album en mode light
+.album-title-light {
+  font-size: 20px;
+  font-weight: bold;
+  color: $text-color-dark; // Utilise la variable de couleur de texte sombre
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  border-bottom: 2px solid $primary-color; // Utilise la couleur primaire pour la bordure
+  display: inline-block;
+}
+
+.album-title-light span {
+  font-weight: normal;
+  color: $text-color-light; // Utilise la variable de couleur de texte clair
+  font-size: 16px;
+}
+
+// Styles pour le titre de l'album en mode high
+.album-title-high {
+  font-size: 36px;
+  font-weight: bold;
+  color: $text-color-dark;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid $primary-color;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+// Styles pour les icônes d'édition sur les albums
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Styles pour la gestion des photos dans les albums
+.photo-management {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+.photo-management a {
+  text-decoration: none;
+}
+
+// Styles pour le groupe de boutons dans la gestion des photos
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .btn-primary,
+  .btn-danger {
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .btn-danger:last-child {
+    margin-right: 0;
+  }
+}
+
+// Styles pour le formulaire de gestion des photos
+.form-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+// Styles pour le lien de retour dans la gestion des photos
+.back-link {
+  margin-top: 20px;
+
+  .btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: $secondary-color; // Utilise la couleur secondaire
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Styles pour la grille de photos dans la vue album
+.photo-grid {
+  column-count: 4;
+  column-gap: 16px;
+  margin-top: 20px;
+}
+
+.photo-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+}
