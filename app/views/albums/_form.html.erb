@@ -1,7 +1,7 @@
-<%= form_with(model: @album, local: true, html: { class: "album-form" }) do |form| %>
+<%= form_with(model: @album, local: true) do |form| %>
   <% if @album.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+      <h2><%= pluralize(@album.errors.count, "erreur") %> empêchent cet album d'être sauvegardé :</h2>
 
       <ul>
       <% @album.errors.full_messages.each do |message| %>
@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :Nom, class: "form-label" %>
+    <%= form.label :name, "Nom de l'album" %>
     <%= form.text_field :name, class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= form.label :Année, class: "form-label" %>
+    <%= form.label :year, "Année" %>
     <%= form.number_field :year, class: "form-input" %>
   </div>
 
   <div class="field">
-  <%= form.label :private, "Privé ?" %>
-  <%= form.check_box :private %>
-</div>
+    <%= form.label :private, "Privé ?" %>
+    <%= form.check_box :private %>
+  </div>
 
-<div class="field">
-  <%= form.label :password, "Mot de Passe (pour les albums privés)" %>
-  <%= form.password_field :password %>
-</div>
+  <div class="field">
+    <%= form.label :password, "Mot de passe (pour les albums privés)" %>
+    <%= form.password_field :password, class: "form-input" %>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Enregistrer l\'album', class: "btn-primary" %>
