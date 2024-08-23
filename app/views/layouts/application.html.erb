@@ -23,7 +23,7 @@
           <ul>
 
             <!-- Lien Albums avec liste déroulante -->
-            <% unless current_page?(controller: 'albums', action: 'index') %>
+            <% if @albums.present? %>
               <li class="header-albums-dropdown">
                 <a href="#" id="header-albums-toggle">Albums</a>
                 <ul id="header-albums-list" class="dropdown-list">

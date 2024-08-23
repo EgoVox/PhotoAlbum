@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   # Avant d'exécuter les actions show, edit, update, destroy et edit_inline, on exécute la méthode set_album
   before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline, :edit_photos, :delete_photos]
+  before_action :load_albums
 
   # On récupère tous les albums et on les stocke dans la variable @albums
   def index
@@ -125,5 +126,9 @@ def correct_password(album, password_attempt)
 
   def album_params
     params.require(:album).permit(:name, :year, :slug, :private, :password)
+  end
+
+  def load_albums
+    @albums = Album.all unless request.path == albums_path
   end
 end
