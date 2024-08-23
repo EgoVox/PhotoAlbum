@@ -73,6 +73,9 @@
     <br>
     <%= submit_tag 'Supprimer les photos sélectionnées', data: { confirm: 'Veux-tu vraiment supprimer ces photos ?' }, class: 'btn-danger', id: 'delete-photos-submit', style: 'display: none;' %>
   <% end %>
+  <div class="pagination" style="text-align: center">
+    <%= paginate @photos %>
+  </div>
 <% end %>
 
 <div class="back-link" style="margin-top: 40px; text-align: center;">

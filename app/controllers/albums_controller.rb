@@ -41,7 +41,8 @@ def unlock_private_albums
 
   # On récupère les photos de l'album et on les stocke dans la variable @photos pour les afficher dans la show
   def show
-    @photos = @album.photos
+    @album = Album.find_by!(slug: params[:id])
+    @photos = @album.photos.page(params[:page]).per(20)
 
     if current_user&.admin?
       @albums = Album.all
