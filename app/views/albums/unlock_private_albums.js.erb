@@ -1,5 +1,4 @@
 <% @unlocked_albums.each do |album| %>
-  console.log("Déverrouillage de l'album avec le slug : <%= album.slug %>");
   var albumElement = document.getElementById("album-<%= album.slug %>");
   if (albumElement) {
     albumElement.classList.remove("hidden");

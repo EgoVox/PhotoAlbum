@@ -37,23 +37,34 @@
 </div>
 
 <% if user_signed_in? && current_user.admin? %>
+
   <!-- Formulaire caché initialement -->
   <div id="photo-form-container" class="form-container" style="display: none;">
     <%= form_with model: [@album, Photo.new], local: true, html: { class: 'photo-form' } do |f| %>
+    <!-- Conteneur pour les champs URL -->
+    <div id="url-fields-container">
       <div class="form-group">
         <%= f.label :image, "Ajouter une image", class: 'form-label' %>
-        <%= f.text_field :image, class: 'form-input' %>
+        <%= f.text_field :image, name: 'photo[images][]', class: 'form-input' %>
       </div>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :description, "Description", class: 'form-label' %>
-        <%= f.text_area :description, class: 'form-textarea' %>
-      </div>
+    <!-- Bouton pour ajouter un nouveau champ URL -->
+    <div class="add-photos-section">
+      <%= link_to '#', id: 'add-photo-btn', class: 'icon-btn', title: 'Ajouter un autre champ' do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
 
-      <div class="form-actions">
-        <%= f.submit 'Ajouter une photo', class: 'btn-primary' %>
-      </div>
-    <% end %>
+    <div class="form-group">
+      <%= f.label :description, "Description", class: 'form-label' %>
+      <%= f.text_area :description, class: 'form-textarea' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Ajouter une photo', class: 'btn-primary' %>
+    </div>
+  <% end %>
   </div>
 <% end %>
 

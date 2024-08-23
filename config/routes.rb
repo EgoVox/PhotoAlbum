@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # Albums routes
   # resources :albums, only: [:index, :show, :edit, :update]
   resources :albums do
+    member do
+      post 'add_photos'
+    end
     # Photos routes nested within albums
-    resources :photos, only: [:create, :destroy]
+    resources :photos, only: [:create, :edit, :destroy]
 
     # Collection routes (apply to the entire collection of albums)
     collection do
