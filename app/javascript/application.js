@@ -16,6 +16,7 @@
 //= require modal
 //= require form
 //= require deleteMode
+//= require header_dropdown
 
 
 
