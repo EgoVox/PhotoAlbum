@@ -42,6 +42,12 @@ def unlock_private_albums
   # On récupère les photos de l'album et on les stocke dans la variable @photos pour les afficher dans la show
   def show
     @photos = @album.photos
+
+    if current_user&.admin?
+      @albums = Album.all
+    else
+      @albums = Album.where(private: false).or(Album.where(id: session[:unlocked_albums_ids]))
+    end
   end
 
   # On crée une nouvelle instance d'album. @album sera utilisée dans le formulaire de création d'album

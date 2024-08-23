@@ -21,10 +21,23 @@
       </div>
         <nav>
           <ul>
+
+            <!-- Lien Albums avec liste déroulante -->
+            <% unless current_page?(controller: 'albums', action: 'index') %>
+              <li class="header-albums-dropdown">
+                <a href="#" id="header-albums-toggle">Albums</a>
+                <ul id="header-albums-list" class="dropdown-list">
+                  <% @albums.each do |album| %>
+                    <li><%= link_to album.name, album_path(album) %></li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+
             <% if user_signed_in? %>
               <li><%= button_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'nav-btn' %></li>
               <% if current_user.admin? %>
-                <li><%= link_to "Bonjour #{current_user.email}", '#' %></li>
+                <li><%= "Bonjour #{current_user.email}" %></li>
               <% end %>
             <% else %>
               <li><%= link_to 'Connexion', new_user_session_path, class: 'nav-link' %></li>
