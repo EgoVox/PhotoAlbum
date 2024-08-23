@@ -9,6 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
       themeToggleBtn.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
   } else {
-    console.log('Theme toggle button not found.');
+
   }
 });

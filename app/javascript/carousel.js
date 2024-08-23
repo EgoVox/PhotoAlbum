@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM is loaded');
 
   const albumsShowElement = document.querySelector('[data-controller="albums-show"]');
   if (!albumsShowElement) {

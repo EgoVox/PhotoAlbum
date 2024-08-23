@@ -17,6 +17,7 @@
 //= require form
 //= require deleteMode
 //= require header_dropdown
+//= require addPhotos
 
 
 

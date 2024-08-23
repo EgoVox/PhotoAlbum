@@ -4,12 +4,24 @@ class PhotosController < ApplicationController
 
   # l'action create est responsable de la création d'une nouvelle photo en utilisant les paramètres du formulaire
   def create
-    # On crée une nouvelle instance de photo pour l'album. On préfère un .build à un .new pour que l'association au bon album soit faite via album.photos
-    @photo = @album.photos.build(photo_params)
-    if @photo.save
-      redirect_to @photo.album, notice: 'La photo a bien été ajoutée.'
+    image_urls = photo_params[:images] || []
+    errors = []
+
+    image_urls.each do |image_url|
+      next if image_url.blank?
+
+      photo = @album.photos.build(image: image_url)
+      if photo.save
+        puts "Photo ajoutée avec succès : #{photo.image}"
+      else
+        errors << photo.errors.full_messages
+      end
+    end
+
+    if errors.any?
+      redirect_to album_path(@album), alert: "Photos n'ont pas été ajoutées : #{errors.join(', ')}"
     else
-      redirect_to @photo.album, alert: 'La photo n\'a pas été ajoutée.'
+      redirect_to album_path(@album), notice: "Photos ajoutées avec succès."
     end
   end
 
@@ -30,7 +42,6 @@ class PhotosController < ApplicationController
 
   # Méthode pour définir les paramètres autorisés pour la création d'une photo
   def photo_params
-    params.require(:photo).permit(:image, :description)
+    params.require(:photo).permit({images: []}, :description)
   end
-
 end
