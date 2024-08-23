@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
     if current_user&.admin?
       @albums = Album.all
     else
-      # Affichez les albums publics + ceux déverrouillés
+      # Affiche les albums publics + ceux déverrouillés
       @albums = Album.where(private: false).or(Album.where(id: session[:unlocked_albums_ids]))
       Rails.logger.info "Albums visibles: #{@albums.map(&:name)}"
     end
@@ -115,7 +115,6 @@ end
   private
 
 def correct_password(album, password_attempt)
-    # Remplacez par votre logique d'authentification du mot de passe
     album.authenticate(password_attempt)
   end
 
