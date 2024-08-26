@@ -14,10 +14,10 @@
 //= require carousel
 //= require theme
 //= require modal
-//= require form
-//= require deleteMode
+//= require addFormAndDeletePhotos
 //= require header_dropdown
 //= require addPhotos
+//= require addDesc
 
 
 

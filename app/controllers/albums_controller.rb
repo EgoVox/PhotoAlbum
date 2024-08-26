@@ -56,7 +56,7 @@ class AlbumsController < ApplicationController
   # On récupère les photos de l'album et on les stocke dans la variable @photos pour les afficher dans la show
   def show
     @album = Album.find_by!(slug: params[:id])
-    @photos = @album.photos.page(params[:page]).per(20)
+    @photos = @album.photos.order(:created_at).page(params[:page]).per(20)
 
     if current_user&.admin?
       @albums = Album.all

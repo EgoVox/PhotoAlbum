@@ -32,11 +32,25 @@ class PhotosController < ApplicationController
     redirect_to @photo.album, notice: 'La photo a bien été supprimée.'
   end
 
+  def update
+    @photo = Photo.find(params[:id])
+    Rails.logger.debug "Mise à jour de la photo avec les paramètres: #{photo_params.inspect}"
+
+    if @photo.update(photo_params)
+      Rails.logger.debug "Mise à jour réussie de la photo: #{@photo.inspect}"
+      render json: { success: true, message: 'Description mise à jour avec succès.' }
+    else
+      Rails.logger.debug "Échec de la mise à jour de la photo: #{@photo.errors.full_messages.join(', ')}"
+      render json: { success: false, message: @photo.errors.full_messages.join(', ') }
+    end
+  end
+
   # On définit les méthodes privées de la classe
   private
 
   #  On définit la méthode set_album qui récupère l'album à partir de l'id passé dans les paramètres
   def set_album
+    Rails.logger.info "Album slug from params: #{params[:album_id]}"
     @album = Album.find_by!(slug: params[:album_id])
   end
 
