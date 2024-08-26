@@ -30,7 +30,11 @@
       <!-- Icône pour supprimer des photos, visible seulement en mode album (Visible uniquement pour l'admin) -->
       <%= link_to '#', id: 'toggle-delete-mode-btn', class: 'icon-btn', title: 'Supprimer des photos' do %>
         <i class="fas fa-trash-alt"></i>
+      <%= link_to '#', id: 'toggle-edit-mode-btn', class: 'icon-btn', title: 'Editer des photos' do %>
+        <i class="fa-solid fa-pen-to-square"></i>
       <% end %>
+    <% end %>
+
     <% end %>
   <% end %>
 
@@ -78,6 +82,10 @@
             <%= check_box_tag 'photo_ids[]', photo.id, false, class: 'photo-checkbox', style: 'display: none;' %>
             <%= image_tag photo.image, class: "photo-fullsize" %>
           </label>
+          <!-- Description éditable -->
+          <div class="photo-description" style="display: none;" contenteditable="false" data-photo-id="<%= photo.id %>" data-album-id="<%= @album.slug %>">
+            <%= photo.description.present? ? photo.description : "" %>
+          </div>
         </div>
       <% end %>
     </div>
