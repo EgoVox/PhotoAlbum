@@ -1,66 +1,83 @@
-// Import des variables et mixins pour les réutiliser dans les styles du carrousel
 @import 'base/variables';
 @import 'base/mixins';
 
-// Styles pour le conteneur principal du carrousel
+// Conteneur principal du carrousel
 .carousel {
-  max-width: 600px;
+  max-width: 100%;
+  /* Adapte la largeur maximale à 100% pour s'ajuster à l'écran */
   margin: 0 auto;
   text-align: center;
 }
 
-// Styles pour l'image principale du carrousel
+// Image principale du carrousel
 .main-image-element {
   width: 100%;
-  max-width: 750px;
-  height: 450px;
+  /* L'image prend toute la largeur disponible */
+  max-width: 100%;
+  /* Limite la largeur à 100% de l'écran */
+  height: auto;
+  /* Adapte la hauteur automatiquement pour maintenir le ratio */
   object-fit: cover;
   border-radius: $border-radius;
   box-shadow: $box-shadow-default;
   cursor: zoom-in;
-  /* Icône de zoom pour l'image principale */
+
+  @media screen and (max-width: 768px) {
+    height: 300px;
+    /* Ajuste la hauteur sur les écrans plus petits */
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 200px;
+    /* Réduit encore la hauteur sur les très petits écrans */
+  }
 }
 
-// Conteneur pour les miniatures
+// Conteneur des miniatures
 .thumbnail-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: $spacing-small;
+  flex-wrap: wrap;
+  /* Permet aux miniatures de se répartir sur plusieurs lignes sur les petits écrans */
 }
 
-// Styles pour le conteneur des miniatures
+// Conteneur des miniatures
 .thumbnails {
   display: flex;
   justify-content: center;
   margin: 0 $spacing-small;
-  /* Espace entre les flèches et les miniatures */
 }
 
-// Styles pour les miniatures
+// Miniatures
 .thumbnail {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  /* Réduit la taille des miniatures pour les petits écrans */
+  height: 60px;
   margin: 0 $spacing-xsmall;
 
   &.active-thumbnail {
     border: 2px solid $primary-color;
     border-radius: $border-radius;
-    /* Ajout d'une bordure pour l'image active */
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    /* Réduit encore plus la taille des miniatures pour les très petits écrans */
   }
 }
 
 .dark-mode .thumbnail {
   border: 2px solid $dark-border-color;
-  /* Bordure par défaut en mode sombre */
 
   &.active-thumbnail {
     border: 2px solid $text-light-color;
-    /* Bordure blanche pour l'image active en mode sombre */
   }
 }
 
-// Styles pour les images des miniatures
+// Images des miniatures
 .thumbnail-image {
   width: 100%;
   height: 100%;
@@ -68,23 +85,22 @@
   border-radius: $border-radius-small;
 }
 
-// Styles pour les flèches de contrôle du carrousel
+// Flèches de contrôle du carrousel
 .control-left,
 .control-right {
   font-size: 24px;
-  /* Taille des flèches */
-  text-decoration: none;
-  /* Supprime le soulignement des liens */
   color: $text-color-dark;
-  /* Couleur des flèches */
   padding: 0 $spacing-small;
   cursor: pointer;
   user-select: none;
-  /* Empêche la sélection du texte */
 
   &:hover {
     color: $primary-color;
-    /* Couleur au survol */
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+    /* Réduit la taille des flèches sur les très petits écrans */
   }
 }
 
