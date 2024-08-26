@@ -143,15 +143,13 @@ class AlbumsController < ApplicationController
     redirect_to album_path(@album, view: 'full'), notice: 'Les photos ont été supprimées.'
   end
 
-  def create_shareable_link
-    expires_at = params[:expires_at] || 1.week.from_now
-    @shareable_link = @album.shareable_links.create!(expires_at: expires_at)
+def create_shareable_link
+  expires_at = params[:expires_at] || 1.week.from_now
+  @shareable_link = @album.shareable_links.create!(expires_at: expires_at)
 
-    # Utilisation du helper `album_shareable_link_url`
-    shareable_url = album_shareable_link_url(album_id: @album.id, token: @shareable_link.token)
-
-    redirect_to album_path(@album), notice: "Lien de partage créé : #{shareable_url}"
-  end
+  # Utilisez l'URL générée en utilisant le slug de l'album
+  redirect_to album_path(@album.slug), notice: "Lien de partage créé : #{album_shareable_link_url(@album.slug, @shareable_link.token)}"
+end
 
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur
   private

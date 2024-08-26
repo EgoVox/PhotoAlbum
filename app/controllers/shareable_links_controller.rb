@@ -4,6 +4,7 @@ class ShareableLinksController < ApplicationController
 
     if @shareable_link.expires_at > Time.current
       @album = @shareable_link.album
+      @photos = @album.photos
       render 'albums/show'
     else
       redirect_to root_path, alert: 'Le lien de partage a expiré.'
