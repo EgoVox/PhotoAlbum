@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :albums do
     member do
       post 'add_photos'
+      post 'create_shareable_link'
     end
+
+    # Shareable links routes
+    resources :shareable_links, only: [:show], param: :token
 
     # Photos routes nested within albums
     resources :photos, only: [:create, :edit, :destroy, :update]

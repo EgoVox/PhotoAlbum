@@ -42,6 +42,16 @@
 
 <% if user_signed_in? && current_user.admin? %>
 
+  <%= form_with url: create_shareable_link_album_path(@album), method: :post do %>
+    <label for="expires_at">Expire dans</label>
+    <%= date_field_tag :expires_at, 1.week.from_now %>
+    <%= submit_tag "Créer un lien de partage" %>
+  <% end %>
+
+  <% if notice %>
+    <p><%= notice %></p>
+  <% end %>
+
   <!-- Formulaire caché initialement -->
   <div id="photo-form-container" class="form-container" style="display: none;">
     <%= form_with model: [@album, Photo.new], local: true, html: { class: 'photo-form' } do |f| %>

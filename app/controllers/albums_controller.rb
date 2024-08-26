@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   # Avant d'exécuter les actions show, edit, update, destroy et edit_inline, on exécute la méthode set_album
-  before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline, :edit_photos, :delete_photos]
+  before_action :set_album, only: [:show, :edit, :update, :destroy, :edit_inline, :edit_photos, :delete_photos, :create_shareable_link]
   before_action :load_albums
 
   # On récupère tous les albums et on les stocke dans la variable @albums
@@ -71,36 +71,35 @@ class AlbumsController < ApplicationController
   end
 
   # l'action create est responsable de la création d'un nouvel album en utilisant les paramètres du formulaire
-def create
-  @album = Album.find(params[:album_id])
-  image_urls = params[:photo][:images]
-  errors = []
+  def create
+    @album = Album.find(params[:album_id])
+    image_urls = params[:photo][:images]
+    errors = []
 
-  puts "URL des images reçues : #{image_urls.inspect}"
+    puts "URL des images reçues : #{image_urls.inspect}"
 
-  image_urls.each do |image_url|
-    next if image_url.blank?
+    image_urls.each do |image_url|
+      next if image_url.blank?
 
-    puts "Tentative d'ajout de la photo : #{image_url}"
+      puts "Tentative d'ajout de la photo : #{image_url}"
 
-    photo = @album.photos.build(image: image_url)
-    if photo.save
-      puts "Photo ajoutée avec succès : #{photo.image}"
+      photo = @album.photos.build(image: image_url)
+      if photo.save
+        puts "Photo ajoutée avec succès : #{photo.image}"
+      else
+        puts "Erreur lors de l'ajout de la photo : #{photo.errors.full_messages}"
+        errors << photo.errors.full_messages
+      end
+    end
+
+    if errors.any?
+      puts "Photos non ajoutées, erreurs : #{errors.inspect}"
+      redirect_to album_path(@album), alert: "Photos n'ont pas été ajoutées : #{errors.join(', ')}"
     else
-      puts "Erreur lors de l'ajout de la photo : #{photo.errors.full_messages}"
-      errors << photo.errors.full_messages
+      puts "Toutes les photos ont été ajoutées avec succès."
+      redirect_to album_path(@album), notice: "Photos ajoutées avec succès."
     end
   end
-
-  if errors.any?
-    puts "Photos non ajoutées, erreurs : #{errors.inspect}"
-    redirect_to album_path(@album), alert: "Photos n'ont pas été ajoutées : #{errors.join(', ')}"
-  else
-    puts "Toutes les photos ont été ajoutées avec succès."
-    redirect_to album_path(@album), notice: "Photos ajoutées avec succès."
-  end
-end
-
 
   def edit
     # Comme 'before_action :set_album' est défini, on a déjà récupéré l'album dans la méthode set_album
@@ -138,16 +137,26 @@ end
     @photos = @album.photos
   end
 
-def delete_photos
-  @photos = @album.photos.where(id: params[:photo_ids])
-  @photos.destroy_all
-  redirect_to album_path(@album, view: 'full'), notice: 'Les photos ont été supprimées.'
-end
+  def delete_photos
+    @photos = @album.photos.where(id: params[:photo_ids])
+    @photos.destroy_all
+    redirect_to album_path(@album, view: 'full'), notice: 'Les photos ont été supprimées.'
+  end
+
+  def create_shareable_link
+    expires_at = params[:expires_at] || 1.week.from_now
+    @shareable_link = @album.shareable_links.create!(expires_at: expires_at)
+
+    # Utilisation du helper `album_shareable_link_url`
+    shareable_url = album_shareable_link_url(album_id: @album.id, token: @shareable_link.token)
+
+    redirect_to album_path(@album), notice: "Lien de partage créé : #{shareable_url}"
+  end
 
   # les méthodes privées sont accessible uniquement à l'intérieur du controlleur
   private
 
-def correct_password(album, password_attempt)
+  def correct_password(album, password_attempt)
     album.authenticate(password_attempt)
   end
 

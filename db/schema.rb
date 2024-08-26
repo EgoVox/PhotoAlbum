@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_21_091039) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_26_170923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_091039) do
     t.index ["album_id"], name: "index_photos_on_album_id"
   end
 
+  create_table "shareable_links", force: :cascade do |t|
+    t.string "token"
+    t.bigint "album_id", null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_shareable_links_on_album_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,4 +59,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_091039) do
   end
 
   add_foreign_key "photos", "albums"
+  add_foreign_key "shareable_links", "albums"
 end

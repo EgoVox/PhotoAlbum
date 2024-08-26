@@ -12,24 +12,41 @@
 // Image principale du carrousel
 .main-image-element {
   width: 100%;
-  /* L'image prend toute la largeur disponible */
   max-width: 100%;
-  /* Limite la largeur à 100% de l'écran */
   height: auto;
-  /* Adapte la hauteur automatiquement pour maintenir le ratio */
   object-fit: cover;
   border-radius: $border-radius;
   box-shadow: $box-shadow-default;
   cursor: zoom-in;
+  margin: 0 auto;
+  /* Centre l'image si elle est plus petite que le conteneur */
+}
 
-  @media screen and (max-width: 768px) {
-    height: 300px;
-    /* Ajuste la hauteur sur les écrans plus petits */
+@media screen and (min-width: 1024px) {
+  .main-image-element {
+    width: 70%;
+    /* Réduit la taille à 70% sur les écrans de bureau */
   }
+}
 
-  @media screen and (max-width: 480px) {
+@media screen and (min-width: 1440px) {
+  .main-image-element {
+    width: 50%;
+    /* Réduit la taille à 50% sur les grands écrans */
+    max-width: 1200px;
+    /* Limite la largeur maximale à 1200px */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-image-element {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-image-element {
     height: 200px;
-    /* Réduit encore la hauteur sur les très petits écrans */
   }
 }
 
