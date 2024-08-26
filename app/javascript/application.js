@@ -9,6 +9,8 @@
 // import "./carousel";
 // import "./displayForm";
 // import "./displayForm";
+// import Clipboard from 'clipboard';
+
 
 //= require rails-ujs
 //= require carousel
@@ -18,7 +20,8 @@
 //= require header_dropdown
 //= require addPhotos
 //= require addDesc
-
+//= require copyToClipboard
+//= require clipboard
 
 
 import "controllers";
