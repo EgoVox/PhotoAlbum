@@ -30,14 +30,9 @@
 
 /* Miniatures d'albums */
 .album-thumbnail {
-  width: 100%;
-  /* Toujours utiliser 100% pour les rendre adaptables */
-  height: auto;
-  /* Maintenir le ratio */
-  max-width: 450px;
-  /* Limite la largeur */
-  max-height: 300px;
-  /* Limite la hauteur */
+  width: 450px;
+  height: 300px;
+
   object-fit: cover;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
