@@ -4,7 +4,7 @@ class Album < ApplicationRecord
   has_secure_password validations: false
   validates :name, presence: true
   validates :password, presence: true, if: :private?
-  before_validation :set_slug, only: [:create, :update]
+  # before_validation :set_slug, only: [:create, :update]
 
   before_save :generate_slug
 
