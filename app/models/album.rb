@@ -1,10 +1,11 @@
 class Album < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :shareable_links, dependent: :destroy
+
   has_secure_password validations: false
+
   validates :name, presence: true
   validates :password, presence: true, if: :private?
-  # before_validation :set_slug, only: [:create, :update]
 
   before_save :generate_slug
 
@@ -15,6 +16,7 @@ class Album < ApplicationRecord
   private
 
   def generate_slug
-    self.slug = name.parameterize if slug.blank?
+    self.slug = name.parameterize if name_changed?
   end
+
 end
