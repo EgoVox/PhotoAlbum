@@ -71,33 +71,13 @@ class AlbumsController < ApplicationController
   end
 
   # l'action create est responsable de la création d'un nouvel album en utilisant les paramètres du formulaire
+
   def create
-    @album = Album.find(params[:album_id])
-    image_urls = params[:photo][:images]
-    errors = []
-
-    puts "URL des images reçues : #{image_urls.inspect}"
-
-    image_urls.each do |image_url|
-      next if image_url.blank?
-
-      puts "Tentative d'ajout de la photo : #{image_url}"
-
-      photo = @album.photos.build(image: image_url)
-      if photo.save
-        puts "Photo ajoutée avec succès : #{photo.image}"
-      else
-        puts "Erreur lors de l'ajout de la photo : #{photo.errors.full_messages}"
-        errors << photo.errors.full_messages
-      end
-    end
-
-    if errors.any?
-      puts "Photos non ajoutées, erreurs : #{errors.inspect}"
-      redirect_to album_path(@album), alert: "Photos n'ont pas été ajoutées : #{errors.join(', ')}"
+    @album = Album.new(album_params)
+    if @album.save
+      redirect_to @album, notice: 'Album was successfully created.'
     else
-      puts "Toutes les photos ont été ajoutées avec succès."
-      redirect_to album_path(@album), notice: "Photos ajoutées avec succès."
+      render 'new'
     end
   end
 
