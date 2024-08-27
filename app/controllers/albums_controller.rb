@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   # On récupère tous les albums et on les stocke dans la variable @albums
   def index
     if current_user&.admin?
-      @albums = Album.all
+      @albums = Album.all.order(:created_at)
     else
       # Affiche les albums publics + ceux déverrouillés
       @albums = Album.where(private: false).or(Album.where(id: session[:unlocked_albums_ids]))

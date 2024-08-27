@@ -27,6 +27,54 @@
   }
 }
 
+.create-link{
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $white-color;
+  padding: 6px;
+  font-size: $font-size-little-small;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.5);
+  }
+}
+
+.copy-to-clipboard{
+  display: inline-block;
+  background-color: $btn-success-background;
+  color: $white-color;
+  padding: $spacing-small $spacing-medium;
+  font-size: $font-size-little-small;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.5);
+  }
+}
+
 // Boutons pour les actions dangereuses (comme la suppression)
 .btn-danger {
   display: inline-block;
@@ -83,6 +131,28 @@
 .btn-submit {
   display: inline-block;
   background-color: $success-color;
+  color: $white-color;
+  padding: $spacing-small $spacing-medium;
+  font-size: $font-size-medium;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($success-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($success-color, 0.5);
+  }
+}
+
+.new-album{
+  display: inline-block;
+  background-color: $dark-button-background;
   color: $white-color;
   padding: $spacing-small $spacing-medium;
   font-size: $font-size-medium;
