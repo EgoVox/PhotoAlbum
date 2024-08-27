@@ -1,8 +1,10 @@
+<br>
 <div class="header-actions">
   <% if user_signed_in? && current_user.admin? %>
-    <%= link_to 'Nouvel Album', new_album_path, class: 'edit-album-btn' %>
+    <%= link_to 'Nouvel Album', new_album_path, class: 'new-album' %>
   <% end %>
 </div>
+<br>
 
 <% unless user_signed_in? && current_user.admin? %>
   <%= link_to 'Afficher les Albums Privés', private_albums_albums_path, id: 'show-private-albums', class: 'btn-show-private-albums' %>

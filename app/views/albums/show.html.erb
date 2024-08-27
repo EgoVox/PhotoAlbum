@@ -39,19 +39,24 @@
   <% end %>
 
 </div>
-
+<br>
 <% if user_signed_in? && current_user.admin? %>
+    <div class="date-field-container">
+      <%= form_with url: create_shareable_link_album_path(@album), method: :post do %>
+        <%# <label for="expires_at">Expire dans</label> %>
+        <p>Le lien vers cet album expire le : <%= date_field_tag :expires_at, 1.week.from_now, class: 'expires_at' %>
+        <%= submit_tag "Créer un lien de partage", class: 'create-link' %></p>
+      <% end %>
+    </div>
 
-  <%= form_with url: create_shareable_link_album_path(@album), method: :post do %>
-    <label for="expires_at">Expire dans</label>
-    <%= date_field_tag :expires_at, 1.week.from_now %>
-    <%= submit_tag "Créer un lien de partage" %>
-  <% end %>
+    <br>
+    <div class="notice">
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+        <button class="copy-to-clipboard" data-clipboard-target="#notice">Copy to clipboard</button>
+      <% end %>
+    </div>
 
-  <% if notice %>
-    <p id="notice"><%= notice %></p>
-    <button class="btn" data-clipboard-target="#notice">Copy to clipboard</button>
-  <% end %>
 
   <!-- Formulaire caché initialement -->
   <div id="photo-form-container" class="form-container" style="display: none;">
@@ -108,7 +113,7 @@
   </div>
 <% end %>
 
-<div class="back-link" style="margin-top: 40px; text-align: center;">
+<div class="back-link" style="margin-top: 10px; text-align: center;">
   <%= link_to 'Retour aux albums', root_path, class: 'btn-back' %>
 </div>
 

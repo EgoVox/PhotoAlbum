@@ -1,0 +1,28 @@
+.expires_at {
+  flex-grow: 1;
+  /* Permet au champ de date de s'étendre pour occuper l'espace disponible */
+  padding: 6px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+  box-sizing: border-box;
+  /* Assure que le padding est inclus dans la largeur totale */
+}
+
+.create-link {
+  flex-shrink: 0;
+  /* Empêche le bouton de rétrécir */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  /* Empêche le texte de se déborder */
+}
+
+.create-link:hover {
+  background-color: #0056b3;
+}

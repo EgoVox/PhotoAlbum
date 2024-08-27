@@ -2,6 +2,19 @@
 @import 'base/variables';
 @import 'base/mixins';
 
+.notice{
+  justify-content: center;
+  text-align: center;
+}
+
+.date-field-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Pour s'assurer que les éléments occupent toute la ligne */
+  gap: 10px;
+  /* Espace entre les éléments */
+}
 // Styles pour la grille de photos dans la vue album
 .photo-grid {
   column-count: 4;
