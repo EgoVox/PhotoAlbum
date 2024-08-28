@@ -63,7 +63,26 @@ class AlbumsController < ApplicationController
     else
       @albums = Album.where(private: false).or(Album.where(id: session[:unlocked_albums_ids]))
     end
+
+    session[:unlocked_albums_ids] ||= []
+
+
+    if @album.private? && !session[:unlocked_albums_ids].include?(@album.id) && !current_user&.admin?
+      redirect_to root_path, alert: "Vous n'avez pas accès à cet album."
+    else
+      @photos = @album.photos.order(:created_at).page(params[:page]).per(20)
+    end
   end
+
+# def show
+#   @album = Album.find_by!(slug: params[:id])
+
+#   if @album.private? && !session[:unlocked_albums_ids].include?(@album.id)
+#     redirect_to root_path, alert: "Vous n'avez pas accès à cet album."
+#   else
+#     @photos = @album.photos.order(:created_at).page(params[:page]).per(20)
+#   end
+# end
 
   # On crée une nouvelle instance d'album. @album sera utilisée dans le formulaire de création d'album
   def new
